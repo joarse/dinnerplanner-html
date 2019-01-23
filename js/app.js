@@ -2,9 +2,23 @@ window.onload= function() {
 	//We instantiate our model
 	const model = new DinnerModel();
 	
-	// And create the instance of ExampleView
-	const exampleView = new ExampleView(document.querySelector("#exampleView"));
+  // And create the instance of ExampleView
+  //const exampleView = new ExampleView(document.querySelector("#exampleView"));
 
+
+  let welcomeViewContainer = {};
+  // make an object with the html-doms relevant to the welcomeView
+  welcomeViewContainer.container = document.querySelector("#welcomeView");
+  welcomeViewContainer.text = document.querySelector("#welcomeText");
+  welcomeViewContainer.button = document.querySelector("#startButton");
+
+  // set a if null condition 
+
+  if (Object.values(welcomeViewContainer).find(e => e == undefined) === undefined) {
+    const welcomeView = new WelcomeView(welcomeViewContainer, model);
+  }
+
+    
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
 	 * query for elements in the whole document.
