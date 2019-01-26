@@ -87,7 +87,7 @@ class DinnerModel {
     //TODO Lab 1
     const dish = this.getDish(id);
 
-    let foundDish = Object.values(this.selectedDishes).find((selectedDish) => {
+    const foundDish = Object.values(this.selectedDishes).find((selectedDish) => {
       return selectedDish.type == dish.type;
     });
     if (foundDish) this.removeDishFromMenu(foundDish.id);
