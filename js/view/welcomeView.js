@@ -1,5 +1,3 @@
-
-
 class WelcomeView{
 
   constructor(containers, model) {
@@ -9,11 +7,10 @@ class WelcomeView{
     this.text = containers.text;
     this.button = containers.button;
     this.model = model;
-
-    this.text.innerHTML = "lorem ipsum";
-    this.button.innerHTML = "Start Button";
   }
 
-
-
+  updateText() {
+    this.text.innerHTML = this.model.lorem;
+    this.button.innerHTML = "Start Button";
+  }
 }

@@ -5,7 +5,6 @@ window.onload= function() {
   // And create the instance of ExampleView
   // const exampleView = new ExampleView(document.querySelector("#exampleView"));
 
-
   let welcomeViewContainer = {};
   // make an object with the html-doms relevant to the welcomeView
   welcomeViewContainer.container = document.querySelector("#welcomeView");
@@ -13,10 +12,11 @@ window.onload= function() {
   welcomeViewContainer.button = document.querySelector("#startButton");
 
   // set a if null condition
-
+  let welcomeView;
   if (Object.values(welcomeViewContainer).find(e => e == undefined) === undefined) {
-    const welcomeView = new WelcomeView(welcomeViewContainer, model);
+    welcomeView = new WelcomeView(welcomeViewContainer, model);
   }
+  welcomeView.updateText();
 
 
   /**
