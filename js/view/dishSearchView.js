@@ -3,7 +3,7 @@
 class DishSearchView {
 
   constructor(containers, model) {
-    this.containers = containers.container;
+    this.container = containers.container;
     this.header = containers.header; 
     this.inputText = containers.inputText;
     this.select = containers.select;
