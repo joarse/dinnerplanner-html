@@ -16,7 +16,7 @@ window.onload= function() {
   if (Object.values(welcomeViewContainer).find(e => e == undefined) === undefined) {
     welcomeView = new WelcomeView(welcomeViewContainer, model);
   }
-  welcomeView.updateText();
+  welcomeView.update();
 
 
   /**
