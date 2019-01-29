@@ -26,13 +26,90 @@
         </div>
       </div>
     </div>
-      <!-- welcome view -->
-      <div class="container col-sm-12" id="welcomeView">
-        <i id="welcomeText" class="text-center-center">placeHolderText</i>
-        <br /><br /><br />
-        <center><button id="startButton" class="btn btn-lg btn-primary">placehHolderText</button></center>
+    <!-- welcome view -->
+    <div class="container col-sm-12" id="welcomeView" >
+      <i id="welcomeText" class="text-center-center">placeHolderText</i>
+      <br /><br /><br />
+      <center><button id="startButton" class="btn btn-lg btn-primary">placehHolderText</button></center>
+    </div>
+    <!-- main body of a lot of views -->
+    <div class="row text-left">
+      <!-- sidebar view -->
+      <div class="col-md-4" id="sideBarView" hidden>
+        <h2>My Dinner</h2>
+        <div class="container">
+          <i> People: </i> <input type="number" name="peopleNumber" min="1" id="guestInput" />
+        </div>
+        <div class="container bg-secondary">
+          <hr />
+          <span>Dish name</span> <span class="float-right">Cost</span>
+          <hr />
+        </div>
+        <div class="container">
+          <span id="menuCost">placeholdertext</span><span class="float-right"> SEK</span>
+        </div>
+        <div class="container text-center">
+          <button class="btn btn-primary">Confirm dinner</button>
+        </div>
+      </div>
+      <!-- dish search view-->
+      <div class="col-md-8" id="dishSearchView" hidden>
+        <div class="container col-md-12">
+          <h2 id="text"> Find a dish</h2>
+          <input type="search" id="inputText" />
+          <select id="inputSelect"></select>
+          <button class="btn btn-primary" id="searchButton">search</button>
+        </div>
+        <!-- dish Item view-->
+        <div class="row col-md-12" id="selectDishItemView">
+          <!-- Mosy likely, the images are created dynamiclly by the views-->
+        </div>
+      </div>
+      <!-- dish details view-->
+      <div class=" col-md-8" id="dishDetailsView" hidden>
+        <div class=" row">
+          <div class="container col-md-6" id="infoDiv">
+            <h2 id="infoHeader"> PlaceholderText </h2>
+            <img id="infoImg" />
+            <p id="infoText">
+              placeholdertext
+            </p>
+            <button class="btn btn-default" id="backToSearchBtn">text</button>
+            <h3 id="preparationHeader">placeholdertext</h3>
+            <p id="preparationText">
+              placeholderText
+            </p>
+          </div>
+          <div class="container col-md-6 bg-warning" id="ingredientsDiv">
+            <header id="ingrHeader">text</header>
+            <hr />
+            <p id="ingrText"> placeholder text</p>
+            <hr />
+            <button class="btn btn-primary" id="addToMenuBtn">text</button>
+            <p class=" float-right" id="totalText">
+              text
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Dish overview-->
+      <div class="container text-center" id="dishFinishedView" hidden>
+        <!-- dish item view-->
+        <div class="row">
+          <div class="col-md-8" id="dishItemView">
+            <!-- here images are placed dynamiclly-->
+          </div>
+          <!-- The lite princing to the right-->
+          <div class="col-md-4" id="dishTotalPrice">
+          </div>
+        </div>
+        <button class="btn btn-primary" id="printButton"> placeholder</button>
+      </div>
+      <div class="container" id="dishPrintView" hidden>
+        <!-- Every html-dom is created by the view dynamiclly-->
       </div>
     </div>
+
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -44,7 +121,6 @@
     <script src="js/app.js"></script>
     <script src="js/model/dinnerModel.js"></script>
     <!-- <script src="js/view/exampleView.js"></script> -->
-
     <!-- TODO: Here you should include JS code for your other views -->
     <script src="js/view/welcomeView.js"></script>
     <script src="js/view/backView.js"></script>
@@ -53,11 +129,11 @@
     <script src="js/control/backCtrl.js"></script>
 
     <!--
-    <script src="js/view/sideBarView.js"></script>
-    <script src="js/view/dishDetailsView.js"></script>
-    <script src="js/view/dishFinishedView.js"></script>
-    <script src="js/view/dishItemView.js"></script>
-    <script src="js/view/dishPrintView.js"></script>
-    <script src="js/view/dishSearchView.js"></script> -->
+  <script src="js/view/sideBarView.js"></script>
+  <script src="js/view/dishDetailsView.js"></script>
+  <script src="js/view/dishFinishedView.js"></script>
+  <script src="js/view/dishItemView.js"></script>
+  <script src="js/view/dishPrintView.js"></script>
+  <script src="js/view/dishSearchView.js"></script> -->
   </body>
 </html>
