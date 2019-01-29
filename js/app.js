@@ -12,12 +12,9 @@ window.onload= function() {
   welcomeViewContainer.button = document.querySelector("#startButton");
 
   // set a if null condition
-  let welcomeView;
-  if (Object.values(welcomeViewContainer).find(e => e == undefined) === undefined) {
-    welcomeView = new WelcomeView(welcomeViewContainer, model);
-  }
-  welcomeView.update();
-
+  const welcomeView = new WelcomeView(welcomeViewContainer, model);
+  const welcomeCtrl = new WelcomeCtrl(welcomeView);
+  welcomeCtrl.init();
 
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
