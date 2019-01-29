@@ -1,16 +1,32 @@
 class BackView {
 
-  constructor(containers, model) {
-    this.container = containers.container;
-    this.header = containers.header;
-    this.btn = containers.button;
+  constructor(container, model) {
+    this.container = container;
+    this.model = model;
 
-    this.numberOfguests = model.getNumberOfGuests();
-
+    model.addObserver(this);
   }
 
-  update() {
-    this.header.html("My dinner: " + this.numberOfguests + " people");
-    this.btn.html("Go back and edit dinner");
+  init() {
+    this.container.find("#numberOfGuests").html(
+      "My dinner: " + this.model.getNumberOfGuests() + " people");
+    this.container.find("#backButton").html("Go back and edit dinner");
+  }
+
+  update(args) {
+    switch(args) {
+      case 'numberOfGuests':
+        this.init();
+        break;
+    }
+  }
+
+  show() {
+    this.container.show();
+    this.init();
+  }
+
+  hide() {
+    this.container.hide();
   }
 }

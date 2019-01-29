@@ -17,15 +17,9 @@ window.onload= function() {
   welcomeCtrl.init();
 
 
-  let backViewContainers = {};
-  // make an object with the html-doms relevant to the welcomeView
-  backViewContainers.container = $("#backView");
-  backViewContainers.header = $("#numberOfGuests");
-  backViewContainers.button = $("#backButton");
-
-  const backView = new BackView(backViewContainers, model);
-  const backCtrl = new BackCtrl(backView);
-  backCtrl.init();
+  const backView = new BackView($("#backView"), model);
+  const backCtrl = new BackCtrl(backView, model);
+  backView.show();
 
 
   /**

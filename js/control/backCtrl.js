@@ -1,10 +1,7 @@
 class BackCtrl {
 
-  constructor(backView) {
+  constructor(backView, model) {
     this.backView = backView;
-  }
-
-  init() {
-    this.backView.update();
+    this.model = model;
   }
 }
