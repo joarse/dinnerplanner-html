@@ -1,7 +1,26 @@
+class Observable{
+  constructor(){
+    this._observers = [];
+  }
+
+  addObserver(observer){
+    this._observers.push(observer);
+  }
+
+  notifyObservers(changeDetails) {
+    for(var i=0; i<this._observers.length; i++) {
+      this._observers[i].update(this, changeDetails);
+    }
+  }
+
+  removeObserver(observer){  /* remove observer from array */}
+}
+
 //DinnerModel Object constructor
-class DinnerModel {
+class DinnerModel extends Observable {
 
   constructor(){
+    super();
     this.dishes = dishesConst; // to be replaced in lab 3
 
     //TODO Lab 1 implement the data structure that will hold number of guest

@@ -1,4 +1,5 @@
 class BackView {
+
   constructor(containers, model) {
     this.container = containers.container;
     this.header = containers.header;
@@ -7,6 +8,7 @@ class BackView {
     this.numberOfguests = model.getNumberOfGuests();
 
   }
+
   update() {
     this.header.html("My dinner: " + this.numberOfguests + " people");
     this.btn.html("Go back and edit dinner");
