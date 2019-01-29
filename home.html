@@ -11,15 +11,27 @@
 
   </head>
   <body>
-    <div class="jumbotron">
-      <div class="page-header" id="headerContainer">
-        <h1 id="headerTitle" class="text-center">Dinner planner</h1>
+    <!-- header -->
+    <div class="jumbotron jumbotron-fluid" style="padding: 10px">
+      <div class="container">
+        <h1 class="text-center">Dinner planner</h1>
       </div>
     </div>
-    <div class="container" id="welcomeView">
-      <i id="welcomeText" class="text-center-center">placeHolderText</i>
-      <br /><br /><br />
-      <center><button id="startButton" class="btn btn-lg btn-primary">placehHolderText</button></center>
+    <!-- back view -->
+    <div class="container col-12" id="backView">
+      <div class="row">
+        <div class="col-12">
+          <span id="numberOfGuests">numberOfGuests</span>
+          <button id="backButton" class="btn btn-primary float-right">placehHolderText</button>
+        </div>
+      </div>
+    </div>
+      <!-- welcome view -->
+      <div class="container col-sm-12" id="welcomeView">
+        <i id="welcomeText" class="text-center-center">placeHolderText</i>
+        <br /><br /><br />
+        <center><button id="startButton" class="btn btn-lg btn-primary">placehHolderText</button></center>
+      </div>
     </div>
 
     <!-- jQuery -->
@@ -35,9 +47,13 @@
 
     <!-- TODO: Here you should include JS code for your other views -->
     <script src="js/view/welcomeView.js"></script>
-    <script src="js/view/sideBarView.js"></script>
+    <script src="js/view/backView.js"></script>
+
     <script src="js/control/welcomeCtrl.js"></script>
+    <script src="js/control/backCtrl.js"></script>
+
     <!--
+    <script src="js/view/sideBarView.js"></script>
     <script src="js/view/dishDetailsView.js"></script>
     <script src="js/view/dishFinishedView.js"></script>
     <script src="js/view/dishItemView.js"></script>

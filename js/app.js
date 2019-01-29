@@ -5,16 +5,28 @@ window.onload= function() {
   // And create the instance of ExampleView
   // const exampleView = new ExampleView(document.querySelector("#exampleView"));
 
-  let welcomeViewContainer = {};
+  let welcomeViewContainers = {};
   // make an object with the html-doms relevant to the welcomeView
-  welcomeViewContainer.container = $("#welcomeView");
-  welcomeViewContainer.text = $("#welcomeText");
-  welcomeViewContainer.button = $("#startButton");
+  welcomeViewContainers.container = $("#welcomeView");
+  welcomeViewContainers.text = $("#welcomeText");
+  welcomeViewContainers.button = $("#startButton");
 
   // set a if null condition
-  const welcomeView = new WelcomeView(welcomeViewContainer, model);
+  const welcomeView = new WelcomeView(welcomeViewContainers, model);
   const welcomeCtrl = new WelcomeCtrl(welcomeView);
   welcomeCtrl.init();
+
+
+  let backViewContainers = {};
+  // make an object with the html-doms relevant to the welcomeView
+  backViewContainers.container = $("#backView");
+  backViewContainers.header = $("#numberOfGuests");
+  backViewContainers.button = $("#backButton");
+
+  const backView = new BackView(backViewContainers, model);
+  const backCtrl = new BackCtrl(backView);
+  backCtrl.init();
+
 
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
