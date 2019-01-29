@@ -10,7 +10,7 @@ class WelcomeView{
   }
 
   update() {
-    this.text.innerHTML = this.model.lorem;
-    this.button.innerHTML = "Start Button";
+    this.text.html(this.model.lorem);
+    this.button.html("Start Button");
   }
 }

@@ -7,9 +7,9 @@ window.onload= function() {
 
   let welcomeViewContainer = {};
   // make an object with the html-doms relevant to the welcomeView
-  welcomeViewContainer.container = document.querySelector("#welcomeView");
-  welcomeViewContainer.text = document.querySelector("#welcomeText");
-  welcomeViewContainer.button = document.querySelector("#startButton");
+  welcomeViewContainer.container = $("#welcomeView");
+  welcomeViewContainer.text = $("#welcomeText");
+  welcomeViewContainer.button = $("#startButton");
 
   // set a if null condition
   const welcomeView = new WelcomeView(welcomeViewContainer, model);
@@ -22,5 +22,4 @@ window.onload= function() {
    * In other places you should limit the search only to the children
    * of the specific view you're working with (see exampleView.js).
    */
-
 };
