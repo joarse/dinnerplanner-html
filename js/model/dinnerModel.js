@@ -1,4 +1,5 @@
 class Observable{
+
   constructor(){
     this._observers = [];
   }
@@ -17,6 +18,7 @@ class Observable{
     delete this._observers[observer];
   }
 }
+
 
 //DinnerModel Object constructor
 class DinnerModel extends Observable {
@@ -122,9 +124,7 @@ class DinnerModel extends Observable {
     //TODO Lab 1
     delete this.selectedDishes[id];
     this.notifyObservers("menu");
-
   }
-
 
   //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
   //you can use the filter argument to filter out the dish by name or ingredient (use for search)
@@ -144,7 +144,7 @@ class DinnerModel extends Observable {
         }
       }
 
-      return dish.type == type && found;
+      return !type || (dish.type == type && found);
     });
   }
 
