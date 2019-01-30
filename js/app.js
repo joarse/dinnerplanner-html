@@ -1,6 +1,8 @@
 window.onload= function() {
   // We instantiate our model
   const model = new DinnerModel();
+  /* TEST CODE */
+  model.addDishToMenu(1);
 
   // And create the instance of ExampleView
   // const exampleView = new ExampleView(document.querySelector("#exampleView"));
@@ -22,6 +24,9 @@ window.onload= function() {
   backView.show();
 
 
+ 
+  const sideBarview = new SideBarView($("#sideBarView"), model);
+  const sideBarCtrl = new SidebarCtrl(sideBarview, model);
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
    * query for elements in the whole document.
