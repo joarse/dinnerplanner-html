@@ -3,8 +3,9 @@ class DishItemView {
 
   constructor(container, model) {
     this.container = container;
-    console.log(container);
     this.model = model;
+    this.model.addObserver(this);
+
     this.dishes = {
       starters: model.getAllDishes("starter"),
       mainDishes: model.getAllDishes("main dish"),
