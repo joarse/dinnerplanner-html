@@ -26,7 +26,10 @@ window.onload= function() {
 
  
   const sideBarview = new SideBarView($("#sideBarView"), model);
-  const sideBarCtrl = new SidebarCtrl(sideBarview, model);
+  const sidebarCtrl = new SideBarCtrl(sideBarview, model);
+
+  const dishSearchView = new DishSearchView($("#dishSearchView"), model);
+  const dishItemView = new DishItemView($("#dishItemView"), model);
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
    * query for elements in the whole document.
