@@ -43,6 +43,7 @@ class DinnerModel extends Observable {
     else {
       this.numberOfGuests = 1;
     }
+    this.notifyObservers("numberOfGuests");
   }
 
   getNumberOfGuests() {
@@ -111,12 +112,15 @@ class DinnerModel extends Observable {
     });
     if (foundDish) this.removeDishFromMenu(foundDish.id);
     this.selectedDishes[id] = dish;
+    this.notifyObservers("menu");
   }
 
   //Removes dish from menu
   removeDishFromMenu(id) {
     //TODO Lab 1
     delete this.selectedDishes[id];
+    this.notifyObservers("menu");
+
   }
 
 
