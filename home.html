@@ -27,7 +27,7 @@
       </div>
     </div>
     <!-- welcome view -->
-    <div class="container col-sm-12" id="welcomeView" hidden >
+    <div class="container col-sm-12" id="welcomeView" hidden>
       <i id="welcomeText" class="text-center-center">placeHolderText</i>
       <br /><br /><br />
       <center><button id="startButton" class="btn btn-lg btn-primary">placehHolderText</button></center>
@@ -35,7 +35,7 @@
     <!-- main body of a lot of views -->
     <div class="row text-left">
       <!-- sidebar view -->
-      <div class="col-md-4" id="sideBarView" >
+      <div class="col-md-4" id="sideBarView">
         <h2>My Dinner</h2>
         <div class="container">
           <i> People: </i> <input type="number" name="peopleNumber" min="1" id="guestInput" />
@@ -56,7 +56,7 @@
         </div>
       </div>
       <!-- dish search view-->
-      <div class="col-md-8" id="dishSearchView" >
+      <div class="col-md-8" id="dishSearchView">
         <div class="container col-md-12">
           <h2 id="text"> Find a dish</h2>
           <input type="search" id="inputText" />
@@ -64,7 +64,7 @@
           <button class="btn btn-primary" id="searchButton">search</button>
         </div>
         <!-- dish Item view-->
-        <div class="row col-md-12" id="selectDishItemView">
+        <div class="row col-md-12" id="dishItemView">
           <!-- Mosy likely, the images are created dynamiclly by the views-->
         </div>
       </div>
@@ -131,12 +131,15 @@
     <script src="js/control/welcomeCtrl.js"></script>
     <script src="js/control/backCtrl.js"></script>
 
-    
-  <script src="js/view/sideBarView.js"></script>
-  <script src="js/view/dishDetailsView.js"></script>
-  <script src="js/view/dishFinishedView.js"></script>
-  <script src="js/view/dishItemView.js"></script>
-  <script src="js/view/dishPrintView.js"></script>
-  <script src="js/view/dishSearchView.js"></script> 
+
+    <script src="js/view/sideBarView.js"></script>
+    <script src="js/control/sidebarCtrl.js"></script>
+
+
+    <script src="js/view/dishDetailsView.js"></script>
+    <script src="js/view/dishFinishedView.js"></script>
+    <script src="js/view/dishItemView.js"></script>
+    <script src="js/view/dishPrintView.js"></script>
+    <script src="js/view/dishSearchView.js"></script>
   </body>
 </html>
