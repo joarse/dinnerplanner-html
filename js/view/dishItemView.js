@@ -1,36 +1,39 @@
 
 class DishItemView {
-  // this class should only make the image and label of the 
-  // dish but be used in several other views
-  constructor(containers, model) {
+
+  constructor(container, model) {
+    this.container = container;
+    console.log(container);
+    this.model = model;
     this.dishes = {
-      starters: model.getAllDishes("starters"),
+      starters: model.getAllDishes("starter"),
       mainDishes: model.getAllDishes("main dish"),
-      desserts: model.getAllDishes("desserts")
+      desserts: model.getAllDishes("dessert")
     };
-
-    this.container = containers.container;
-
+    this.init();
+  }
+  init() {
     Object.values(this.dishes).forEach(type => {
       // should make and append a image w/ labe
       // for each dish in database
       type.forEach(dish => {
-        this.container.appendChild(this.update(dish));
+        this.container.append(this.update(dish));
       });
     });
-
   }
 
-  update(dish) {
+
+  update(dish){
     let div = document.createElement("div");
     let image = document.createElement("img");
     let label = document.createElement("label");
-
     label.innerHTML = dish.name;
-    image.src = "./images" + dish.image;
+    image.src = "./images/" + dish.image;
     div.classList.add("col-md-3");
     div.appendChild(image);
     div.appendChild(label);
     return div;
+    
   }
+  
 }
