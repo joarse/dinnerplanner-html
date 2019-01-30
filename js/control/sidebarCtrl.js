@@ -1,7 +1,8 @@
 
-class SidebarCtrl {
+class SideBarCtrl {
 
-  constructor(sidebarView) {
+  constructor(sidebarView, model) {
     this.sidebarView = sidebarView;
+    this.model = model;
   }
 }
