@@ -11,13 +11,12 @@ window.onload= function() {
  
   const welcomeView = new WelcomeView($("#welcomeView"), model);
   const welcomeCtrl = new WelcomeCtrl(welcomeView);
-  welcomeCtrl.init();
 
   welcomeView.hide();
 
   const backView = new BackView($("#backView"), model);
   const backCtrl = new BackCtrl(backView, model);
-  backView.show();
+  backView.hide();
 
 
  
@@ -40,7 +39,7 @@ window.onload= function() {
 
 
   const dishPrintView = new DishPrintView($("#dishPrintView"), model);
-  dishPrintView.show();
+  dishPrintView.hide();
 
   
   /**
