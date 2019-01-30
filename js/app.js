@@ -28,13 +28,17 @@ window.onload= function() {
   const sideBarView = new SideBarView($("#sideBarView"), model);
   const sidebarCtrl = new SideBarCtrl(sideBarView, model);
 
-  sideBarView.hide();
+  
 
   const dishSearchView = new DishSearchView($("#dishSearchView"), model);
+  dishSearchView.hide();
+
   const dishItemView = new DishItemView($("#dishItemView"), model);
   dishItemView.hide();
 
-  dishItemView.show();
+  const dishDetailsView = new DishDetailsView($("#dishDetailsView"), model);
+  dishDetailsView.hide();
+
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
    * query for elements in the whole document.
