@@ -36,5 +36,14 @@ class DishItemView {
     return div;
     
   }
+
+  hide() {
+    this.container.hide();
+  }
+
+  show() {
+    this.container.show();
+    this.update();
+  }
   
 }
