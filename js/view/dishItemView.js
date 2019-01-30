@@ -8,17 +8,9 @@ class DishItemView {
 
   init() {
     this.model.getAllDishes().forEach((dish) => {
-      this.container.append(this.createItem(dish));
+      let item = new ItemView(dish.id, dish.image, dish.name)
+      this.container.append(item.html);
     });
-  }
-
-  createItem(dish) {
-    let div = `
-    <div class="col-md-3">
-      <img src="./images/${dish.image}"/>
-      <label>${dish.name}</label>
-    </div>`;
-    return div;
   }
 
   update(args) {
