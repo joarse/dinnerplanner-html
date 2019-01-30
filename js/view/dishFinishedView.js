@@ -28,4 +28,13 @@ class DishFinishedView {
   hide() {
     this.container.hide();
   }
+
+  update(args) {
+    switch (args) {
+      case "numberOFGuests":
+        break;
+      case "menu":
+        break;
+    }
+  }
 }

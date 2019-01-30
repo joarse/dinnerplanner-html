@@ -63,4 +63,13 @@ class DishPrintView {
     this.container.show();
     this.init();
   }
+
+  update(args) {
+    switch (args) {
+      case "numberOFGuests":
+        break;
+      case "menu":
+        break;
+    }
+  }
 }

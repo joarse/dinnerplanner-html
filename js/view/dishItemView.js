@@ -18,13 +18,13 @@ class DishItemView {
       // should make and append a image w/ labe
       // for each dish in database
       type.forEach(dish => {
-        this.container.append(this.update(dish));
+        this.container.append(this.createDivs(dish));
       });
     });
   }
 
 
-  update(dish){
+  createDivs(dish){
     let div = document.createElement("div");
     let image = document.createElement("img");
     let label = document.createElement("label");
@@ -37,13 +37,23 @@ class DishItemView {
     
   }
 
+  update(args) {
+ 
+    switch (args) {
+      case "numberOFGuests":
+        break;
+      case "menu":
+        break;
+    }
+  }
+
   hide() {
     this.container.hide();
   }
 
   show() {
     this.container.show();
-    this.update();
+    this.init();
   }
   
 }

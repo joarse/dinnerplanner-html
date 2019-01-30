@@ -6,16 +6,28 @@ class WelcomeView{
 
     this.container = container;
     this.model = model;
+    this.model.addObserver(this);
 
   }
 
-  update() {
+  init() {
     this.container.find("#welcomeText").html(this.model.lorem);
     this.container.find("#startButton").html("Start Button");
   }
 
+  update(args) {
+    // shoundt do anything here
+    switch (args) {
+      case "numberOFGuests":
+        break;
+      case "menu":
+        break;
+    }
+  }
+
   show() {
     this.container.show();
+    this.init();
   }
 
   hide() {
