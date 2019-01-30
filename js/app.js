@@ -4,6 +4,7 @@ window.onload= function() {
   /* TEST CODE */
   model.addDishToMenu(1);
 
+  let activeViews = [];
   // And create the instance of ExampleView
   // const exampleView = new ExampleView(document.querySelector("#exampleView"));
 
@@ -12,7 +13,7 @@ window.onload= function() {
   const welcomeView = new WelcomeView($("#welcomeView"), model);
   const welcomeCtrl = new WelcomeCtrl(welcomeView);
 
-  welcomeView.hide();
+  welcomeView.show();
 
   const backView = new BackView($("#backView"), model);
   const backCtrl = new BackCtrl(backView, model);
