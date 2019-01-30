@@ -39,7 +39,7 @@ class DishSearchView {
 
   show() {
     this.container.show();
-    this.init();
+    //this.init();
   }
   update(args) {
     switch (args) {
