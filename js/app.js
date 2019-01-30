@@ -47,15 +47,14 @@ window.onload = () => {
 };
 
 class GeneralController {
-
   constructor(views, screens) {
-    this.views = views;
-    this.screens = screens;
+    this.views = views;   // array of view
+    this.screens = screens; // object of views(array of view)
   }
 
   hideAll() {
-    Object.keys(views).forEach((key) => {
-      views[key].hide();
+    this.views.forEach((view) => {
+      view.hide();
     });
   };
 
@@ -69,8 +68,8 @@ class GeneralController {
 
   showScreen(name) {
     this.hideAll();
-    Object.keys(this.screens).forEach((key) => {
-      this.screens[name][key].show();
+    this.screens[name].forEach((view) => {
+      view.show();
     });
   }
 };
