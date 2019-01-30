@@ -11,11 +11,12 @@ class SideBarView {
 
   init() {
     this.container.find("#guestInput").val(this.model.getNumberOfGuests()); 
+    this.container.find("#test").html(this.model.getNumberOfGuests()); 
     this.container.find("#menuCost").html(this.model.getTotalMenuPrice() + " SEK");
   }
-  update(args) {
+  update(model,args) {
     switch (args) {
-      case "numberOFGuests":
+      case "numberOfGuests":
         this.init();
         break;
       case "menu":

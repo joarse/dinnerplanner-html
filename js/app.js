@@ -23,7 +23,7 @@ window.onload= function() {
  
   const sideBarView = new SideBarView($("#sideBarView"), model);
   const sidebarCtrl = new SideBarCtrl(sideBarView, model);
-  sideBarView.hide();
+  sideBarView.show();
   
 
   const dishSearchView = new DishSearchView($("#dishSearchView"), model);
