@@ -4,6 +4,7 @@ window.onload = () => {
   /* TEST CODE */
   model.addDishToMenu(1);
 
+  generalController = new GeneralController([], {});
   let activeViews = [];
   // And create the instance of ExampleView
   // const exampleView = new ExampleView(document.querySelector("#exampleView"));
@@ -11,32 +12,46 @@ window.onload = () => {
   // make an object with the html-doms relevant to the welcomeView
 
   const welcomeView = new WelcomeView($("#welcomeView"), model);
-  const welcomeCtrl = new WelcomeCtrl(welcomeView);
-  welcomeView.hide();
+  const welcomeCtrl = new WelcomeCtrl(welcomeView, generalController);
+  //welcomeView.hide();
 
   const backView = new BackView($("#backView"), model);
   const backCtrl = new BackCtrl(backView, model);
-  backView.hide();
+  //backView.hide();
 
   const sideBarView = new SideBarView($("#sideBarView"), model);
   const sidebarCtrl = new SideBarCtrl(sideBarView, model);
-  sideBarView.hide();
+  //sideBarView.hide();
 
   const dishSearchView = new DishSearchView($("#dishSearchView"), model);
-  dishSearchView.hide();
+  //dishSearchView.hide();
 
   const dishItemView = new DishItemView($("#dishItemView"), model);
-  dishItemView.hide();
+  //dishItemView.hide();
 
   const dishDetailsView = new DishDetailsView($("#dishDetailsView"), model);
-  dishDetailsView.hide();
+  //dishDetailsView.hide();
 
   const dishFinishedView = new DishFinishedView($("#dishFinishedView"), model);
-  dishFinishedView.hide();
+  //dishFinishedView.hide();
 
   const dishPrintView = new DishPrintView($("#dishPrintView"), model);
-  dishPrintView.hide();
+  //dishPrintView.hide();
 
+  generalController.addView(welcomeView);
+  generalController.addView(backView);
+  generalController.addView(sideBarView);
+  generalController.addView(dishSearchView);
+  generalController.addView(dishDetailsView);
+  generalController.addView(dishFinishedView);
+  generalController.addView(dishPrintView);
+  generalController.hideAll();
+
+  generalController.addScreen("welcome", [welcomeView]);
+
+  generalController.showScreen("welcome");
+
+  generalController.addScreen("select_dish",[sideBarView, dishSearchView, dishItemView]);
 
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
