@@ -71,7 +71,7 @@ class DinnerModel extends Observable {
   //Returns all the dishes on the menu.
   getFullMenu() {
     //TODO Lab 1
-    return Object.values(this.selectedDishes).map(dish => dish.name);
+    return Object.values(this.selectedDishes);
   }
 
   //Returns all ingredients for all the dishes on the menu.
@@ -406,5 +406,3 @@ const dishesConst = [{
   }]
 }
 ];
-
-
