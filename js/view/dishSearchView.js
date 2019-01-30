@@ -33,6 +33,14 @@ class DishSearchView {
 
   }
 
+  hide() {
+    this.container.hide();
+  }
+
+  show() {
+    this.container.show();
+    this.init();
+  }
   update(args) {
     switch (args) {
       case "numberOfGuests":
