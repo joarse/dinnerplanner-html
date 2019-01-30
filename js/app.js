@@ -1,4 +1,4 @@
-window.onload= function() {
+window.onload = () => {
   // We instantiate our model
   const model = new DinnerModel();
   /* TEST CODE */
@@ -9,22 +9,18 @@ window.onload= function() {
   // const exampleView = new ExampleView(document.querySelector("#exampleView"));
 
   // make an object with the html-doms relevant to the welcomeView
- 
+
   const welcomeView = new WelcomeView($("#welcomeView"), model);
   const welcomeCtrl = new WelcomeCtrl(welcomeView);
-
-  welcomeView.show();
+  welcomeView.hide();
 
   const backView = new BackView($("#backView"), model);
   const backCtrl = new BackCtrl(backView, model);
   backView.hide();
 
-
- 
   const sideBarView = new SideBarView($("#sideBarView"), model);
   const sidebarCtrl = new SideBarCtrl(sideBarView, model);
-  sideBarView.show();
-  
+  sideBarView.hide();
 
   const dishSearchView = new DishSearchView($("#dishSearchView"), model);
   dishSearchView.hide();
@@ -38,15 +34,43 @@ window.onload= function() {
   const dishFinishedView = new DishFinishedView($("#dishFinishedView"), model);
   dishFinishedView.hide();
 
-
   const dishPrintView = new DishPrintView($("#dishPrintView"), model);
   dishPrintView.hide();
 
-  
+
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
    * query for elements in the whole document.
    * In other places you should limit the search only to the children
    * of the specific view you're working with (see exampleView.js).
    */
+};
+
+class GeneralController {
+
+  constructor(views, screens) {
+    this.views = views;
+    this.screens = screens;
+  }
+
+  hideAll() {
+    Object.keys(views).forEach((key) => {
+      views[key].hide();
+    });
+  };
+
+  addView(view) {
+    this.views.push(view);
+  }
+
+  addScreen(name, views) {
+    this.screens[name] = views;
+  }
+
+  showScreen(name) {
+    this.hideAll();
+    Object.keys(this.screens).forEach((key) => {
+      this.screens[name][key].show();
+    });
+  }
 };
