@@ -13,7 +13,9 @@ class Observable{
     }
   }
 
-  removeObserver(observer){  /* remove observer from array */}
+  removeObserver(observer) {  /* remove observer from array */
+    delete this._observers[observer];
+  }
 }
 
 //DinnerModel Object constructor
