@@ -1,16 +1,24 @@
 class WelcomeView{
 
-  constructor(containers, model) {
+  constructor(container, model) {
     // containers are objects with html-doms that the view needs to access
     // model is data
-    this.container = containers.container ;
-    this.text = containers.text;
-    this.button = containers.button;
+
+    this.container = container;
     this.model = model;
+
   }
 
   update() {
-    this.text.html(this.model.lorem);
-    this.button.html("Start Button");
+    this.container.find("#welcomeText").html(this.model.lorem);
+    this.container.find("#startButton").html("Start Button");
+  }
+
+  show() {
+    this.container.show();
+  }
+
+  hide() {
+    this.container.hide();
   }
 }
