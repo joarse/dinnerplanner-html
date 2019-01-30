@@ -2,19 +2,15 @@
 
 class DishPrintView {
 
-  constructor(containers, model) {
-    this.container = containers.container;
-    this.button = containers.button;
-    this.header1 = containers.header1;
-    this.header2 = containers.header2;
-    this.menu = model.getFullMenu();
+  constructor(container, model) {
+    this.container = container;
+    this.model = model;
+    this.model.addObserver(this);
+  }
 
-    this.header1.innerHTML = "My dinner: " + model.getNumberOFGuests() + " people";
-    this.button.innerHTML = "Go back and edit dinner";
-
-    this.menu.forEach((dish) => {
-      this.createDishInPrint(dish);
-    });
+  init() {
+    this.createDishInPrint(this.model.getDish(1));
+    this.createDishInPrint(this.model.getDish(2));
   }
 
   createDishInPrint(dish) {
@@ -26,16 +22,22 @@ class DishPrintView {
     let image = document.createElement("img");
     let dishHeader = document.createElement("header");
     let dishText = document.createElement("p");
-    let dishTextNode = document.createTextNode("lorem ipsum");
+    let dishTextNode = document.createTextNode(this.model.lorem);
     let prepHeader = document.createElement("header");
     let prepText = document.createElement("p");
     let prepTextNode = document.createTextNode(dish.description);
 
+    image.src = "./images/" + dish.image;
+    prepHeader.innerHTML = "Preperation";
+    dishHeader.innerHTML = dish.name;
+
+    
+
     // set div col-md
-    div.classList.add("col-md-12");
-    div1.classList.add("col-md-2");
-    div2.classList.add("col-md-5");
-    div3.classList.add("col-md-5");
+    div.classList.add("row");
+    div1.classList.add("col-2");
+    div2.classList.add("col-5");
+    div3.classList.add("col-5");
 
     // append
     div1.appendChild(image);
@@ -50,6 +52,15 @@ class DishPrintView {
     div.append(div1);
     div.append(div2);
     div.append(div3);
-    document.body.appendChild(div);
+    this.container.append(div);
+  }
+
+  hide() {
+    this.container.hide();
+  }
+
+  show() {
+    this.container.show();
+    this.init();
   }
 }
