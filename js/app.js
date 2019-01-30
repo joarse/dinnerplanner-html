@@ -7,17 +7,13 @@ window.onload= function() {
   // And create the instance of ExampleView
   // const exampleView = new ExampleView(document.querySelector("#exampleView"));
 
-  let welcomeViewContainers = {};
   // make an object with the html-doms relevant to the welcomeView
-  welcomeViewContainers.container = $("#welcomeView");
-  welcomeViewContainers.text = $("#welcomeText");
-  welcomeViewContainers.button = $("#startButton");
-
-  // set a if null condition
-  const welcomeView = new WelcomeView(welcomeViewContainers, model);
+ 
+  const welcomeView = new WelcomeView($("#welcomeView"), model);
   const welcomeCtrl = new WelcomeCtrl(welcomeView);
   welcomeCtrl.init();
 
+  welcomeView.hide();
 
   const backView = new BackView($("#backView"), model);
   const backCtrl = new BackCtrl(backView, model);
@@ -27,7 +23,7 @@ window.onload= function() {
  
   const sideBarView = new SideBarView($("#sideBarView"), model);
   const sidebarCtrl = new SideBarCtrl(sideBarView, model);
-
+  sideBarView.hide();
   
 
   const dishSearchView = new DishSearchView($("#dishSearchView"), model);
@@ -39,6 +35,14 @@ window.onload= function() {
   const dishDetailsView = new DishDetailsView($("#dishDetailsView"), model);
   dishDetailsView.hide();
 
+  const dishFinishedView = new DishFinishedView($("#dishFinishedView"), model);
+  dishFinishedView.hide();
+
+
+  const dishPrintView = new DishPrintView($("#dishPrintView"), model);
+  dishPrintView.show();
+
+  
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
    * query for elements in the whole document.
