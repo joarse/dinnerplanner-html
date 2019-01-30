@@ -2,26 +2,43 @@
 
 class DishSearchView {
 
-  constructor(containers, model) {
-    this.container = containers.container;
-    this.header = containers.header; 
-    this.inputText = containers.inputText;
-    this.select = containers.select;
-    this.dishTypes = model.dishTypes; // make a const arr in model
-
-    this.header.innerHTML = "Find a dish";
-    this.inputText.defaultValue = "Enter key words";
-
-    this.dishTypes.forEach((type) => {
-      this.select.appendChild(this.createSelectDom);
-    });
+  constructor(container, model) {
+    this.container = container;
+    this.model = model;
+    model.addObserver(this);  
+    this.init();
   }
 
-  createSelectDom(type) {
-    // method that returns the options for the select dom
-    let option = document.createElement("option");
-    option.value = type;
-    option.text = type;
-    return option;
+  init() {
+    this.container.find("#inputText").val("Enter key words");
+
+    this.container.find("#inputSelect").append($("<option>", {
+      value: 0,
+      text: "all"
+    }))
+    this.container.find("#inputSelect").append($("<option>", {
+      value: 1,
+      text: "starter"
+    }));
+    this.container.find("#inputSelect").append($("<option>", {
+      value: 2,
+      text: "main dish"
+    }));
+    this.container.find("#inputSelect").append($("<option>", {
+      value: 1,
+      text: "dessert"
+    }));
+
+    //dishItemView = new DishItemView(this.container.find("#dishItemView"), this.model);
+
   }
+
+  update(args) {
+    switch (args) {
+      case "numberOfGuests":
+        //do something
+        break;
+    }
+  }
+
 }
