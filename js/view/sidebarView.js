@@ -6,18 +6,19 @@ class SideBarView {
     this.container = container;
     this.model = model;
     model.addObserver(this);
-    this.init();
   }
 
   init() {
     this.container.find("#guestInput").val(this.model.getNumberOfGuests()); 
     this.container.find("#test").html(this.model.getNumberOfGuests()); 
     this.container.find("#menuCost").html(this.model.getTotalMenuPrice() + " SEK");
-    this.container.find("#appendDishes");
 
+    this.container.find("#appendDishes").empty(); // it redraws the doms
+    this.model.getFullMenu().forEach(dish => {
+      this.container.find("#appendDishes").append(this.createDom(dish));
+    });
   }
   update(model, args) {
-    // ask TA about model as param
     switch (args) {
       case "numberOfGuests":
         this.init();
@@ -49,5 +50,12 @@ class SideBarView {
   disableBtn() {
     this.container.find("#sidebarBtn").attr("disabled", true);
 
+  }
+
+  createDom(dish) {
+    let div = $("<div>");
+    div.append($("<span>", { "class": "float-left" }).html(dish.name));
+    div.append($("<span>", { "class": "float-right" }).html("dish price"));
+    return div;
   }
 }
