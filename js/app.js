@@ -16,7 +16,7 @@ window.onload = () => {
   //welcomeView.hide();
 
   const backView = new BackView($("#backView"), model);
-  const backCtrl = new BackCtrl(backView, model, generalController );
+  const backCtrl = new BackCtrl(backView, model, generalController);
   //backView.hide();
 
   const sideBarView = new SideBarView($("#sideBarView"), model);
@@ -36,8 +36,11 @@ window.onload = () => {
   //dishFinishedView.hide();
 
   const dishPrintView = new DishPrintView($("#dishPrintView"), model);
-  //dishPrintView.hide();
 
+  const allViews = [welcomeView, backView, sideBarView, dishSearchView, dishDetailsView, dishFinishedView, dishPrintView];
+  //dishPrintView.hide();
+  allViews.forEach(view => { generalController.addView(view) });
+  /*
   generalController.addView(welcomeView);
   generalController.addView(backView);
   generalController.addView(sideBarView);
@@ -45,6 +48,7 @@ window.onload = () => {
   generalController.addView(dishDetailsView);
   generalController.addView(dishFinishedView);
   generalController.addView(dishPrintView);
+  */
   generalController.hideAll();
 
   generalController.addScreen("welcome", [welcomeView]);
@@ -52,7 +56,9 @@ window.onload = () => {
   generalController.showScreen("welcome");
 
   generalController.addScreen("select_dish", [sideBarView, dishSearchView, dishItemView]);
-  generalController.addScreen("dinner_overview", [backView, dishPrintView]);
+  generalController.addScreen("dinner_overview", [backView, dishFinishedView]);
+  generalController.addScreen("dish_details", [sideBarView, dishDetailsView]);
+  generalController.addScreen("dish_printout", [backView, dishPrintView]);
 
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
