@@ -16,7 +16,7 @@ window.onload = () => {
   //welcomeView.hide();
 
   const backView = new BackView($("#backView"), model);
-  const backCtrl = new BackCtrl(backView, model);
+  const backCtrl = new BackCtrl(backView, model, generalController );
   //backView.hide();
 
   const sideBarView = new SideBarView($("#sideBarView"), model);
