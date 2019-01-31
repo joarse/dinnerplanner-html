@@ -43,8 +43,7 @@ window.onload = () => {
   generalController.addScreen("dish_details", [sideBarView, dishDetailsView]);
   generalController.addScreen("dish_printout", [backView, dishPrintView]);
 
- // generalController.showScreen("welcome");
-  generalController.showScreen("dish_details");
+  generalController.showScreen("welcome");
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
    * query for elements in the whole document.
