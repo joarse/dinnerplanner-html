@@ -13,16 +13,22 @@ class SideBarView {
     this.container.find("#guestInput").val(this.model.getNumberOfGuests()); 
     this.container.find("#test").html(this.model.getNumberOfGuests()); 
     this.container.find("#menuCost").html(this.model.getTotalMenuPrice() + " SEK");
+    this.container.find("#appendDishes");
+
   }
-  update(model,args) {
+  update(model, args) {
+    // ask TA about model as param
     switch (args) {
       case "numberOfGuests":
         this.init();
         break;
       case "menu":
-        this.container.find("#appendDishes");
-        // add a container and a span with correct information
-
+        if (model.getFullMenu() === undefined || model.getFullMenu().length == 0) {
+          this.disableBtn();
+        }
+        else {
+          this.enableBtn();
+        }
         this.init();
         break;
     }
@@ -34,5 +40,14 @@ class SideBarView {
   show() {
     this.container.show();
     this.init();
+  }
+
+  enableBtn() {
+    this.container.find("#sidebarBtn").removeAttr("disabled");
+  }
+
+  disableBtn() {
+    this.container.find("#sidebarBtn").attr("disabled", true);
+
   }
 }
