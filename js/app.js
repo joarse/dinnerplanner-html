@@ -11,54 +11,37 @@ window.onload = () => {
 
   // make an object with the html-doms relevant to the welcomeView
 
+
+  // Init views
   const welcomeView = new WelcomeView($("#welcomeView"), model);
-  const welcomeCtrl = new WelcomeCtrl(welcomeView, generalController);
-  //welcomeView.hide();
-
   const backView = new BackView($("#backView"), model);
-  const backCtrl = new BackCtrl(backView, model, generalController);
-  //backView.hide();
-
   const sideBarView = new SideBarView($("#sideBarView"), model);
-  const sidebarCtrl = new SideBarCtrl(sideBarView, model, generalController);
-  //sideBarView.hide();
-
   const dishSearchView = new DishSearchView($("#dishSearchView"), model);
-  //dishSearchView.hide();
-
   const dishItemView = new DishItemView($("#dishItemView"), model);
-  //dishItemView.hide();
-
   const dishDetailsView = new DishDetailsView($("#dishDetailsView"), model);
-  //dishDetailsView.hide();
-
   const dishFinishedView = new DishFinishedView($("#dishFinishedView"), model);
-  //dishFinishedView.hide();
-
   const dishPrintView = new DishPrintView($("#dishPrintView"), model);
 
+  // init controllers
+  const welcomeCtrl = new WelcomeCtrl(welcomeView, generalController);
+  const backCtrl = new BackCtrl(backView, model, generalController);
+  const sidebarCtrl = new SideBarCtrl(sideBarView, model, generalController);
+
+
+  // adding views to general state controller
   const allViews = [welcomeView, backView, sideBarView, dishSearchView, dishDetailsView, dishFinishedView, dishPrintView];
-  //dishPrintView.hide();
   allViews.forEach(view => { generalController.addView(view) });
-  /*
-  generalController.addView(welcomeView);
-  generalController.addView(backView);
-  generalController.addView(sideBarView);
-  generalController.addView(dishSearchView);
-  generalController.addView(dishDetailsView);
-  generalController.addView(dishFinishedView);
-  generalController.addView(dishPrintView);
-  */
   generalController.hideAll();
 
+
+  // adding screens to general state controllers
   generalController.addScreen("welcome", [welcomeView]);
-
-  generalController.showScreen("welcome");
-
   generalController.addScreen("select_dish", [sideBarView, dishSearchView, dishItemView]);
   generalController.addScreen("dinner_overview", [backView, dishFinishedView]);
   generalController.addScreen("dish_details", [sideBarView, dishDetailsView]);
   generalController.addScreen("dish_printout", [backView, dishPrintView]);
+
+  generalController.showScreen("welcome");
 
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
