@@ -27,6 +27,8 @@ window.onload = () => {
   const backCtrl = new BackCtrl(backView, model, generalController);
   const sidebarCtrl = new SideBarCtrl(sideBarView, model, generalController);
   const dishFinishedCtrl = new DishFinishedCtrl(dishFinishedView, model, generalController);
+  const dishDetailsCtrl = new DishDetailsCtrl(dishDetailsView, model, generalController);
+
 
   // adding views to general state controller
   const allViews = [welcomeView, backView, sideBarView, dishSearchView, dishDetailsView, dishFinishedView, dishPrintView];
@@ -41,8 +43,8 @@ window.onload = () => {
   generalController.addScreen("dish_details", [sideBarView, dishDetailsView]);
   generalController.addScreen("dish_printout", [backView, dishPrintView]);
 
-  generalController.showScreen("welcome");
-
+ // generalController.showScreen("welcome");
+  generalController.showScreen("dish_details");
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
    * query for elements in the whole document.
