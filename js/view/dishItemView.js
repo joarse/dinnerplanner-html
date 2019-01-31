@@ -1,10 +1,9 @@
 class DishItemView {
 
-  constructor(container, model, generalController) {
+  constructor(container, model) {
     this.container = container;
     this.model = model;
     this.model.addObserver(this);
-    this.generalController = generalController;
   }
 
   init() {
@@ -12,7 +11,7 @@ class DishItemView {
     this.model.getAllDishes().forEach((dish) => {
       let itemView = new ItemView(dish.id, dish.image, dish.name)
       this.container.append(itemView.container);
-      let itemCrtl = new ItemCtrl(itemView, this.generalController)
+      let itemCrtl = new ItemCtrl(itemView, this.generalController);
       itemCrtl.bind();
     });
   }
@@ -32,6 +31,7 @@ class DishItemView {
 
   show() {
     this.container.show();
+    this.container.empty();
     this.init();
   }
 }
