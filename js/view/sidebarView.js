@@ -9,8 +9,8 @@ class SideBarView {
   }
 
   init() {
-    this.container.find("#guestInput").val(this.model.getNumberOfGuests()); 
-    this.container.find("#test").html(this.model.getNumberOfGuests()); 
+    this.container.find("#guestInput").val(this.model.getNumberOfGuests());
+    this.container.find("#test").html(this.model.getNumberOfGuests());
     this.container.find("#menuCost").html(this.model.getTotalMenuPrice() + " SEK");
 
     this.container.find("#appendDishes").empty(); // it redraws the doms
@@ -55,7 +55,7 @@ class SideBarView {
   createDom(dish) {
     let div = $("<div>");
     div.append($("<span>", { "class": "float-left" }).html(dish.name));
-    div.append($("<span>", { "class": "float-right" }).html("dish price"));
+    div.append($("<span>", { "class": "float-right" }).html(this.model.getPrice(dish.id)));
     return div;
   }
 }
