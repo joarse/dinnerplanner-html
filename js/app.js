@@ -20,7 +20,7 @@ window.onload = () => {
   //backView.hide();
 
   const sideBarView = new SideBarView($("#sideBarView"), model);
-  const sidebarCtrl = new SideBarCtrl(sideBarView, model);
+  const sidebarCtrl = new SideBarCtrl(sideBarView, model, generalController);
   //sideBarView.hide();
 
   const dishSearchView = new DishSearchView($("#dishSearchView"), model);
@@ -51,7 +51,8 @@ window.onload = () => {
 
   generalController.showScreen("welcome");
 
-  generalController.addScreen("select_dish",[sideBarView, dishSearchView, dishItemView]);
+  generalController.addScreen("select_dish", [sideBarView, dishSearchView, dishItemView]);
+  generalController.addScreen("dinner_overview", [backView, dishPrintView]);
 
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
