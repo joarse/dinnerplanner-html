@@ -1,7 +1,9 @@
 
 class DishFinishedCtrl {
 
-  constructor(dishFinishedView) {
-    this.dishFinishedView = dishFinishedView;
+  constructor(dishFinishedView, model, generalController) {
+    dishFinishedView.container.find("#printButton").click(event => {
+      generalController.showScreen("dish_printout");
+    });
   }
 }
