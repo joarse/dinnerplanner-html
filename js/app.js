@@ -5,7 +5,7 @@ window.onload = () => {
   model.addDishToMenu(1);
 
   generalController = new GeneralController([], {});
-  let activeViews = [];
+
   // And create the instance of ExampleView
   // const exampleView = new ExampleView(document.querySelector("#exampleView"));
 

@@ -14,7 +14,7 @@ class DishItemView {
       let itemView = new ItemView(dish.id, dish.image, dish.name)
       this.container.append(itemView.container);
       // create dish item controller and bind event on it
-      let itemCrtl = new ItemCtrl(itemView, this.generalController);
+      let itemCrtl = new ItemCtrl(itemView, this.model, this.generalController);
       itemCrtl.bind();
     });
   }

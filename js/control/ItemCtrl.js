@@ -1,13 +1,14 @@
 class ItemCtrl {
 
-  constructor(itemView, generalController) {
+  constructor(itemView, model, generalController) {
     this.itemView = itemView;
+    this.model = model;
     this.generalController = generalController;
   }
 
   bind() {
     this.itemView.container.click((e) => {
-      const id = this.itemView.container.attr("id");
+      this.model.selectedDishItem = this.itemView.container.attr("id");
       this.generalController.showScreen("dish_details");
     });
   }
