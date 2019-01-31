@@ -26,7 +26,7 @@ window.onload = () => {
   const welcomeCtrl = new WelcomeCtrl(welcomeView, generalController);
   const backCtrl = new BackCtrl(backView, model, generalController);
   const sidebarCtrl = new SideBarCtrl(sideBarView, model, generalController);
-
+  const dishFinishedCtrl = new DishFinishedCtrl(dishFinishedView, model, generalController);
 
   // adding views to general state controller
   const allViews = [welcomeView, backView, sideBarView, dishSearchView, dishDetailsView, dishFinishedView, dishPrintView];
