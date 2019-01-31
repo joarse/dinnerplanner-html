@@ -1,15 +1,15 @@
 class ItemView {
 
   constructor(id, image, text) {
-    this.html = this.createItem(id, image, text);
+    this.container = this.createItem(id, image, text);
   }
 
   createItem(id, image, text) {
     let div = `
-    <div id="item-${id}" class="col-sm-3">
+    <div id="${id}" class="col-sm-6 col-md-4 col-lg-3 dish">
       <img src="./images/${image}"/>
       <label>${text}</label>
     </div>`;
-    return div;
+    return $(div);
   }
 }
