@@ -9,11 +9,14 @@ class DishPrintView {
   }
 
   init() {
-    this.createDishInPrint(this.model.getDish(1));
-    this.createDishInPrint(this.model.getDish(2));
+    this.container.empty();
+    let menu = this.model.getFullMenu();
+    menu.forEach(dish => {
+      this.createDom(dish);
+    });
   }
 
-  createDishInPrint(dish) {
+  createDom(dish) {
     // method that creates html-doms displaying a dish
     let div = document.createElement("div");
     let div1 = document.createElement("div");
