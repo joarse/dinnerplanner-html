@@ -17,7 +17,7 @@ window.onload = () => {
   const backView = new BackView($("#backView"), model);
   const sideBarView = new SideBarView($("#sideBarView"), model);
   const dishSearchView = new DishSearchView($("#dishSearchView"), model);
-  const dishItemView = new DishItemView($("#dishItemView"), model);
+  const dishItemView = new DishItemView($("#dishItemView"), model, generalController);
   const dishDetailsView = new DishDetailsView($("#dishDetailsView"), model);
   const dishFinishedView = new DishFinishedView($("#dishFinishedView"), model);
   const dishPrintView = new DishPrintView($("#dishPrintView"), model);
