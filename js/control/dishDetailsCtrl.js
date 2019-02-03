@@ -3,7 +3,7 @@ class DishDetailsCtrl {
 
   constructor(dishDetailsView, model, generalController) {
     dishDetailsView.container.find("#addToMenuBtn").click(event => {
-      model.addDishToMenu(201); // should get the proper id
+      model.addDishToMenu(model.selectedDishItem); 
       generalController.showScreen("select_dish");
     });
 
