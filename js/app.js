@@ -39,7 +39,7 @@ window.onload = () => {
   // adding screens to general state controllers
   generalController.addScreen("WELCOME", [welcomeView]);
   generalController.addScreen("SELECT_DISH", [sideBarView, dishSearchView, dishItemView]);
-  generalController.addScreen("DINNER_OVERVIEW", [backView, dishFinishedView]);
+  generalController.addScreen("DISH_OVERVIEW", [backView, dishFinishedView]);
   generalController.addScreen("DISH_DETAILS", [sideBarView, dishDetailsView]);
   generalController.addScreen("DISH_PRINTOUT", [backView, dishPrintView]);
 
@@ -82,10 +82,18 @@ class GeneralController {
   confirmState(state) {
     switch(state) {
       case "WELCOME":
+      case "BACK":
+      case "ADD_TO_MENU":
         this.showScreen("SELECT_DISH");
       break;
       case "CLICK_DISH":
         this.showScreen("DISH_DETAILS");
+      break;
+      case "CONFIRM_MENU":
+        this.showScreen("DISH_OVERVIEW");
+      break;
+      case "FINISH_MENU":
+        this.showScreen("DISH_PRINTOUT");
       break;
     }
   }

@@ -12,7 +12,7 @@ class SideBarCtrl {
     this.sidebarView.container.find("#sidebarBtn").click(event => {
       // should notify the general state controller that welcomeview is hidden
       // and the next scre
-      generalController.showScreen("dinner_overview");
+      generalController.confirmState("CONFIRM_MENU");
     });
   }
 }
