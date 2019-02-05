@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -9,16 +9,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+    <!-- Customized css -->
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
     <!-- header -->
-    <div class="jumbotron jumbotron-fluid" style="padding: 10px">
+    <div class="jumbotron" style="padding: 10px; margin-bottom: 50px">
       <div class="container">
         <h1 class="text-center">Dinner planner</h1>
       </div>
     </div>
     <!-- back view -->
-    <div class="container col-12" id="backView">
+    <div class="container" id="backView">
       <div class="row">
         <div class="col-12">
           <span id="numberOfGuests">numberOfGuests</span>
@@ -27,10 +29,14 @@
       </div>
     </div>
     <!-- welcome view -->
-    <div class="container col-sm-12" id="welcomeView">
-      <i id="welcomeText" class="text-center-center">placeHolderText</i>
-      <br /><br /><br />
-      <center><button id="startButton" class="btn btn-lg btn-primary">placehHolderText</button></center>
+    <div class="container" id="welcomeView">
+      <div class="row">
+        <div class="col-12">
+          <p id="welcomeText">placeHolderText</p>
+          <br/><br/>
+          <center><button id="startButton" class="btn btn-lg btn-primary">placehHolderText</button></center>
+        </div>
+      </div>
     </div>
     <!-- main body of a lot of views -->
     <div class="row text-left">
