@@ -15,7 +15,7 @@ window.onload = () => {
   // Init views
   const welcomeView = new WelcomeView($("#welcomeView"), model);
   const backView = new BackView($("#backView"), model);
-  const sideBarView = new SideBarView($("#sideBarView"), model);
+  const sideBarView = new SideBarView($("#sideBarView"), model, generalController);
   const dishSearchView = new DishSearchView($("#dishSearchView"), model);
   const dishItemView = new DishItemView($("#dishItemView"), model, generalController);
   const dishDetailsView = new DishDetailsView($("#dishDetailsView"), model);
