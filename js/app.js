@@ -28,6 +28,7 @@ window.onload = () => {
   const sidebarCtrl = new SideBarCtrl(sideBarView, model, generalController);
   const dishFinishedCtrl = new DishFinishedCtrl(dishFinishedView, model, generalController);
   const dishDetailsCtrl = new DishDetailsCtrl(dishDetailsView, model, generalController);
+  const dishSearchCtrl = new DishSearchCtrl(dishSearchView, model, generalController);
 
 
   // adding views to general state controller
