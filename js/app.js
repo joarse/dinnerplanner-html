@@ -37,13 +37,13 @@ window.onload = () => {
 
 
   // adding screens to general state controllers
-  generalController.addScreen("welcome", [welcomeView]);
-  generalController.addScreen("select_dish", [sideBarView, dishSearchView, dishItemView]);
-  generalController.addScreen("dinner_overview", [backView, dishFinishedView]);
-  generalController.addScreen("dish_details", [sideBarView, dishDetailsView]);
-  generalController.addScreen("dish_printout", [backView, dishPrintView]);
+  generalController.addScreen("WELCOME", [welcomeView]);
+  generalController.addScreen("SELECT_DISH", [sideBarView, dishSearchView, dishItemView]);
+  generalController.addScreen("DINNER_OVERVIEW", [backView, dishFinishedView]);
+  generalController.addScreen("DISH_DETAILS", [sideBarView, dishDetailsView]);
+  generalController.addScreen("DISH_PRINTOUT", [backView, dishPrintView]);
 
-  generalController.showScreen("welcome");
+  generalController.showScreen("WELCOME");
   /**
    * IMPORTANT: app.js is the only place where you are allowed to
    * query for elements in the whole document.
@@ -77,5 +77,16 @@ class GeneralController {
     this.screens[name].forEach((view) => {
       view.show();
     });
+  }
+
+  confirmState(state) {
+    switch(state) {
+      case "WELCOME":
+        this.showScreen("SELECT_DISH");
+      break;
+      case "SELECT":
+        this.showScreen("SELECT_DISH");
+      break;
+    }
   }
 };
