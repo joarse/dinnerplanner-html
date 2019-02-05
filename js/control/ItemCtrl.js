@@ -9,7 +9,7 @@ class ItemCtrl {
   bind() {
     this.itemView.container.click((e) => {
       this.model.selectedDishItem = this.itemView.container.attr("id");
-      this.generalController.showScreen("dish_details");
+      this.generalController.confirmState("CLICK_DISH");
     });
   }
 }

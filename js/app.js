@@ -84,8 +84,8 @@ class GeneralController {
       case "WELCOME":
         this.showScreen("SELECT_DISH");
       break;
-      case "SELECT":
-        this.showScreen("SELECT_DISH");
+      case "CLICK_DISH":
+        this.showScreen("DISH_DETAILS");
       break;
     }
   }
