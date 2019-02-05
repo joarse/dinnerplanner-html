@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
-    <!-- header -->
+    <!-- Header -->
     <div class="jumbotron" style="padding: 10px; margin-bottom: 50px">
       <div class="container">
         <h1 class="text-center">Dinner planner</h1>
       </div>
     </div>
-    <!-- back view -->
+    <!-- Back View -->
     <div class="container" id="backView">
       <div class="row">
         <div class="col-12">
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <!-- welcome view -->
+    <!-- Welcome View -->
     <div class="container" id="welcomeView">
       <div class="row">
         <div class="col-12">
@@ -38,93 +38,89 @@
         </div>
       </div>
     </div>
-    <!-- main body of a lot of views -->
-    <div class="row text-left">
-      <!-- sidebar view -->
-      <div class="col-md-4" id="sideBarView">
-        <h2>My Dinner</h2>
-        <div class="container">
-          <i> People: </i> <input type="number" name="peopleNumber" min="1" id="guestInput" />
-        </div>
-        <table class = "table" id="sideBarTable" >
-          <thead>
-            <tr>
-              <th scope="col" class=" bg-secondary" id=" dishName">Dish name</th>
-              <th scope="col" class=" bg-secondary"> Cost</th>
-            </tr>
-          </thead>
-          <tbody id="appendDishes">
-
-
-          </tbody>
-          <!--  <span id="dishName">Dish name</span> <span class="float-right">Cost</span>
-      <div class="container" id="appendDishes">
-        <!-- here dishes gets added-->
-          <!-- </div> -->
-
-        </table>
-        <div class="container">
-          <span id="menuCost" class="float-right"> SEK</span>
-        </div>
-        <div class="container text-center">
-          <button class="btn btn-primary" id="sidebarBtn">Confirm dinner</button>
-        </div>
-      </div>
-      <!-- dish search view-->
-      <div class="col-md-8" id="dishSearchView">
-        <div class="container col-md-12">
-          <h2 id="text"> Find a dish</h2>
-          <input type="search" id="inputText" />
-          <select id="inputSelect"></select>
-          <button class="btn btn-primary" id="searchButton">search</button>
-        </div>
-        <!-- dish Item view-->
-        <div class="row col-md-12" id="dishItemView">
-          <!-- Mosy likely, the images are created dynamiclly by the views-->
-        </div>
-      </div>
-      <!-- dish details view-->
-      <div class=" col-md-8" id="dishDetailsView">
-        <div class=" row">
-          <div class="container col-md-6" id="infoDiv">
-            <h2 id="infoHeader"> PlaceholderText </h2>
-            <img id="infoImg" />
-            <p id="infoText">
-              placeholdertext
-            </p>
-            <button class="btn btn-primary" id="backToSearchBtn">text</button>
-            <h3 id="preparationHeader">placeholdertext</h3>
-            <p id="preparationText">
-              placeholderText
-            </p>
+    <!-- Main body of a lot of views -->
+    <div class="container">
+      <div class="row">
+        <!-- Sidebar View -->
+        <div class="col-md-4" id="sideBarView">
+          <h2>My Dinner</h2>
+          <div class="container">
+            <i> People: </i> <input type="number" name="peopleNumber" min="1" id="guestInput" />
           </div>
-          <div class="container col-md-6 bg-warning" id="ingredientsDiv">
-            <header id="ingrHeader">text</header>
-            <hr />
-            <p id="ingrText"> placeholder text</p>
-            <hr />
-            <button class="btn btn-primary" id="addToMenuBtn">text</button>
-            <p class=" float-right" id="totalText">
-              text
-            </p>
+          <table class = "table" id="sideBarTable">
+            <thead>
+              <tr>
+                <th scope="col" class=" bg-secondary" id=" dishName">Dish name</th>
+                <th scope="col" class=" bg-secondary">Cost</th>
+              </tr>
+            </thead>
+            <tbody id="appendDishes">
+            </tbody>
+          </table>
+          <div class="container">
+            <span id="menuCost" class="float-right">SEK</span>
+          </div>
+          <div class="container text-center">
+            <button class="btn btn-primary" id="sidebarBtn">Confirm dinner</button>
           </div>
         </div>
-      </div>
-      <!-- Dish overview-->
-      <div class="container text-center" id="dishFinishedView">
-        <!-- dish item view-->
-        <div class="row" id="finishedItemDiv">
-          <div class="col-md-8" id="dishItemView">
-            <!-- here images are placed dynamiclly-->
+        <!-- Dish Search View-->
+        <div class="col-md-8" id="dishSearchView">
+          <div class="container col-md-12">
+            <h2 id="text"> Find a dish</h2>
+            <input type="search" id="inputText" />
+            <select id="inputSelect"></select>
+            <button class="btn btn-primary" id="searchButton">search</button>
           </div>
-          <!-- The lite princing to the right-->
-          <div class="col-md-4" id="dishTotalPrice">
+          <!-- Dish Item View-->
+          <div class="row col-md-12" id="dishItemView">
+            <!-- Mosy likely, the images are created dynamiclly by the views-->
           </div>
         </div>
-        <button class="btn btn-primary" id="printButton"> placeholder</button>
-      </div>
-      <div class="container" id="dishPrintView">
-        <!-- Every html-dom is created by the view dynamiclly-->
+        <!-- Dish Details View-->
+        <div class=" col-md-8" id="dishDetailsView">
+          <div class=" row">
+            <div class="container col-md-6" id="infoDiv">
+              <h2 id="infoHeader"> PlaceholderText </h2>
+              <img id="infoImg" />
+              <p id="infoText">
+                placeholdertext
+              </p>
+              <button class="btn btn-primary" id="backToSearchBtn">text</button>
+              <h3 id="preparationHeader">placeholdertext</h3>
+              <p id="preparationText">
+                placeholderText
+              </p>
+            </div>
+            <div class="container col-md-6 bg-warning" id="ingredientsDiv">
+              <header id="ingrHeader">text</header>
+              <hr />
+              <p id="ingrText"> placeholder text</p>
+              <hr />
+              <button class="btn btn-primary" id="addToMenuBtn">text</button>
+              <p class=" float-right" id="totalText">
+                text
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Dish Overview-->
+        <div class="container text-center" id="dishFinishedView">
+          <!-- Dish Item View-->
+          <div class="row" id="finishedItemDiv">
+            <div class="col-md-8" id="dishItemView">
+              <!-- here images are placed dynamiclly-->
+            </div>
+            <!-- The lite princing to the right-->
+            <div class="col-md-4" id="dishTotalPrice">
+            </div>
+          </div>
+          <button class="btn btn-primary" id="printButton"> placeholder</button>
+        </div>
+        <!-- Dish Print View-->
+        <div class="container" id="dishPrintView">
+          <!-- Every html-dom is created by the view dynamiclly-->
+        </div>
       </div>
     </div>
 
