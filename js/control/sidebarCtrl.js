@@ -14,14 +14,5 @@ class SideBarCtrl {
       // and the next scre
       generalController.confirmState("CONFIRM_MENU");
     });
-
-    console.log(this.sidebarView.container.find("tbody#appenDishes").children());
-    this.sidebarView.container.find().click(e => {
-      console.log("ayy");
-    });
-
-    this.sidebarView.container.find("#sideBarTable").click(e => {
-      console.log("lmao");
-    });
   }
 }
