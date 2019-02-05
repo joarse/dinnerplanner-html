@@ -6,31 +6,27 @@ class DishSearchView {
     this.container = container;
     this.model = model;
     model.addObserver(this);  
-    this.init();
   }
 
   init() {
+    this.container.find("#inputSelect").empty();
     this.container.find("#inputText").val("Enter key words");
-
     this.container.find("#inputSelect").append($("<option>", {
-      value: 0,
+      value: "all",
       text: "all"
-    }))
+    }));
     this.container.find("#inputSelect").append($("<option>", {
-      value: 1,
+      value: "starter",
       text: "starter"
     }));
     this.container.find("#inputSelect").append($("<option>", {
-      value: 2,
+      value: "main dish",
       text: "main dish"
     }));
     this.container.find("#inputSelect").append($("<option>", {
-      value: 1,
+      value: "dessert",
       text: "dessert"
     }));
-
-    //dishItemView = new DishItemView(this.container.find("#dishItemView"), this.model);
-
   }
 
   hide() {
@@ -39,7 +35,7 @@ class DishSearchView {
 
   show() {
     this.container.show();
-    //this.init();
+    this.init();
   }
   update(args) {
     switch (args) {
