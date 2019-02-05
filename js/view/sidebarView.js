@@ -10,13 +10,14 @@ class SideBarView {
 
   init() {
     this.container.find("#guestInput").val(this.model.getNumberOfGuests());
-    this.container.find("#test").html(this.model.getNumberOfGuests());
     this.container.find("#menuCost").html(this.model.getTotalMenuPrice() + " SEK");
 
     this.container.find("#appendDishes").empty(); // it redraws the doms
     this.model.getFullMenu().forEach(dish => {
       this.container.find("#appendDishes").append(this.createDom(dish));
+      // dynamiclly make a new controller for each dish 
     });
+
   }
   update(model, args) {
     switch (args) {
@@ -53,9 +54,10 @@ class SideBarView {
   }
 
   createDom(dish) {
-    let div = $("<div>");
-    div.append($("<span>", { "class": "float-left" }).html(dish.name));
-    div.append($("<span>", { "class": "float-right" }).html(this.model.getPrice(dish.id)));
+    let div = $("<tr>", { "id": dish.id });
+    div.append($("<td>", { "class": "float-left" }).html(dish.name));
+    div.append($("<td>").html(this.model.getPrice(dish.id)));
+    console.log(div);
     return div;
   }
 }
