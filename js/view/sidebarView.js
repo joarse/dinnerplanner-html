@@ -2,9 +2,10 @@
 
 class SideBarView {
 
-  constructor(container, model) {
+  constructor(container, model, generalController) {
     this.container = container;
     this.model = model;
+    this.generalController = generalController;
     model.addObserver(this);
   }
 
@@ -57,7 +58,13 @@ class SideBarView {
     let div = $("<tr>", { "id": dish.id });
     div.append($("<td>", { "class": "float-left" }).html(dish.name));
     div.append($("<td>").html(this.model.getPrice(dish.id)));
-    console.log(div);
+    // contoller has to be dynamic since the div is created dynamiclly
+    let sideBarMenuCtrl = new SideBarMenuCtrl(this, div, this.model, this.generalController);
+    sideBarMenuCtrl.bind();
     return div;
+  }
+
+  removeDish(container) {
+    container.remove();
   }
 }
