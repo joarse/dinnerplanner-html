@@ -57,7 +57,7 @@ class SideBarView {
   createDom(dish) {
     let div = $("<tr>", { "id": dish.id });
     div.append($("<td>", { "class": "float-left" }).html(dish.name));
-    div.append($("<td>").html(this.model.getPrice(dish.id)));
+    div.append($("<td>").html(this.model.getPrice(dish.id)*(this.model.getNumberOfGuests())));
     // contoller has to be dynamic since the div is created dynamiclly
     let sideBarMenuCtrl = new SideBarMenuCtrl(this, div, this.model, this.generalController);
     sideBarMenuCtrl.bind();
