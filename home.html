@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -46,15 +46,23 @@
         <div class="container">
           <i> People: </i> <input type="number" name="peopleNumber" min="1" id="guestInput" />
         </div>
-        <i id="test"> test </i>
-        <div class="container bg-secondary">
-          <hr />
-          <span id="dishName">Dish name</span> <span class="float-right">Cost</span>
-          <hr />
-        </div>
-        <div class="container" id="appendDishes">
-          <!-- here dishes gets added-->
-        </div>
+        <table class = "table" id="sideBarTable" >
+          <thead>
+            <tr>
+              <th scope="col" class=" bg-secondary" id=" dishName">Dish name</th>
+              <th scope="col" class=" bg-secondary"> Cost</th>
+            </tr>
+          </thead>
+          <tbody id="appendDishes">
+
+
+          </tbody>
+          <!--  <span id="dishName">Dish name</span> <span class="float-right">Cost</span>
+      <div class="container" id="appendDishes">
+        <!-- here dishes gets added-->
+          <!-- </div> -->
+
+        </table>
         <div class="container">
           <span id="menuCost" class="float-right"> SEK</span>
         </div>
