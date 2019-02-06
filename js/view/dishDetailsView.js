@@ -22,9 +22,11 @@ class DishDetailsView {
 
     this.container.find("#ingrHeader").html("Ingredients for " + this.model.getNumberOfGuests() + " people");
     this.container.find("#ingrText").html("");
+
+
     let sum = 0;
+    /*
     dish.ingredients.forEach((ingredient) => {
-      // this also needs changing for interaction
       let text = document.createElement("p");
       let textNode = document.createTextNode(ingredient.quantity + " " + ingredient.unit + " "  + ingredient.name + " SEK " + ingredient.price);
       sum += ingredient.price;
@@ -32,6 +34,20 @@ class DishDetailsView {
       this.container.find("#ingrText").append(text);
 
     });
+    */
+    this.container.find("#ingrTable").empty();
+    let table = $("<table>");
+    dish.ingredients.forEach(ingredient => {
+      let row = $("<tr>");
+      const quantity = $("<th>").text(ingredient.quantity);
+      const unit = $("<th>").text(ingredient.unit);
+      const name = $("<th>").text(ingredient.name);
+      const price = $("<th>").text(" SEK: " + ingredient.price);
+      row.append(quantity, unit, name, price);
+      sum += ingredient.price;
+      table.append(row);
+    });
+    this.container.find("#ingrTable").append(table);
 
     this.container.find("#addToMenuBtn").html("Add to menu");
     this.container.find("#totalText").html("SEK " + sum);
