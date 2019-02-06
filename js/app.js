@@ -2,7 +2,7 @@ window.onload = () => {
   // We instantiate our model
   const model = new DinnerModel();
   /* TEST CODE */
-  model.addDishToMenu(1);
+ // model.addDishToMenu(1);
 
   generalController = new GeneralController([], {});
 
