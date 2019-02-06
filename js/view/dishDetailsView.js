@@ -12,7 +12,9 @@ class DishDetailsView {
     const dish = this.model.getDish(id);
     this.container.find("#infoHeader").html(dish.name);
 
-    this.container.find("#infoImg").attr("src","./images/" + dish.image); // needs get selected dish from menu
+    this.container.find("#infoImg")
+                  .attr("src", dish.image)
+                  .attr("width", "100%");
     this.container.find("#infoText").html(this.model.lorem);
     this.container.find("#backToSearchBtn").html("Back to search");
 
