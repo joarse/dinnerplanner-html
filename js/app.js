@@ -23,7 +23,7 @@ window.onload = () => {
   const dishPrintView = new DishPrintView($("#dishPrintView"), model);
 
   // init controllers
-  const welcomeCtrl = new WelcomeCtrl(welcomeView, generalController);
+  const welcomeCtrl = new WelcomeCtrl(welcomeView, model, generalController);
   const backCtrl = new BackCtrl(backView, model, generalController);
   const sidebarCtrl = new SideBarCtrl(sideBarView, model, generalController);
   const dishSearchCtrl = new DishSearchCtrl(dishSearchView, model, generalController);

@@ -20,8 +20,8 @@ class DishSearchCtrl {
         this.model.dishes = dishes;
         // update the searchedInfo (text, option) in the model
         this.model.setSearchedInfo(text, option);
-        generalController.confirmState("SEARCHED");
         // TODO: rm the spinner
+        generalController.confirmState("SEARCHED");
       });
     });
   }

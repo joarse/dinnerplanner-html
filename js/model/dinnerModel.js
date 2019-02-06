@@ -29,10 +29,11 @@ class DinnerModel extends Observable {
 
     // API endpoint
     const apiEndpoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com";
-    this.endpoints = [
-      `${apiEndpoint}/recipes/search`,
-      `${apiEndpoint}/recipes/informationBulk/`
-    ];
+    this.endpoints = {
+      "random": `${apiEndpoint}/recipes/random`,
+      "search": `${apiEndpoint}/recipes/search`,
+      "informationBulk": `${apiEndpoint}/recipes/informationBulk`
+    };
 
     //TODO Lab 1 implement the data structure that will hold number of guest
     // and selected dishes for the dinner menu
@@ -43,7 +44,7 @@ class DinnerModel extends Observable {
     this.selectedDishes = {};
 
     // stores searched text and option in an array
-    this.searchedInfo = [undefined, 0];
+    this.searchedInfo = [undefined, undefined];
 
     // stores the dish item selected
     this.selectedDishItem = -1;
@@ -164,10 +165,13 @@ class DinnerModel extends Observable {
 
   // get ID of recipes from endpoint
   getRecipesID(number, text, option) {
-    const endpoint = this.endpoints[0];
+    // if option === undefined, then it means "all"
+    const endpoint = (option === undefined)
+      ? `${this.endpoints.random}?number=${number}`
+      : `${this.endpoints.search}?number=${number}&query=${text}&type=${option}`;
 
-    return fetch(`${endpoint}?number=${number}&query=${text}&type=${option}`, {
-        headers:{
+    return fetch(endpoint, {
+      headers: {
           "X-Mashape-Key": ""
         }
       })
@@ -175,14 +179,17 @@ class DinnerModel extends Observable {
       .catch(error => `Error on getting data from ${endpoint}`)
       .then((x) => {
         let ids = [];
-         //get all the ids into an array
-        x.results.forEach(e => ids.push(e.id));
+        //get all the ids into an array
+        const response = (option === undefined)? x.recipes: x.results;
+        response.forEach(e => ids.push(e.id));
+
         return ids;
       });
   }
 
   getRecipesInformation(ids) {
-    const endpoint = this.endpoints[1];
+    const endpoint = this.endpoints.informationBulk;
+
     return fetch(`${endpoint}?ids=${ids.join()}&includeNutrition=false`, {
       headers: {
           "X-Mashape-Key": ""
@@ -214,8 +221,8 @@ class DinnerModel extends Observable {
         "ingredients": ingrArr
       });
     });
+
     return arr;
-    //return this;
   }
 
   // For endpoints
