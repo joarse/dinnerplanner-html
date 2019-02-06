@@ -27,6 +27,13 @@ class DinnerModel extends Observable {
     super();
     this.dishes = dishesConst; // to be replaced in lab 3
 
+    // API endpoint
+    const apiEndpoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+    this.endpoints = [
+      `${apiEndpoint}/recipes/search`,
+      `${apiEndpoint}/recipes/informationBulk/`
+    ];
+
     //TODO Lab 1 implement the data structure that will hold number of guest
     // and selected dishes for the dinner menu
     this.numberOfGuests = 1;
@@ -153,6 +160,79 @@ class DinnerModel extends Observable {
     //TODO Lab 1
     delete this.selectedDishes[id];
     this.notifyObservers("menu");
+  }
+
+  // get ID of recipes from endpoint
+  getRecipesID(number, text, option) {
+    const endpoint = this.endpoints[0];
+    return fetch(`${endpoint}?number=${number}&query=${text}&type=${option}`, {
+        headers:{
+          "X-Mashape-Key": ""
+        }
+      })
+      .then(response => response.json())
+      .catch(error => `Error on getting data from ${endpoint}`)
+      .then((x) => {
+        let ids = [];
+         //get all the ids into an array
+        x.results.forEach(e => ids.push(e.id));
+        return ids;
+      });
+  }
+
+  getRecipesInformation(ids) {
+    const endpoint = this.endpoints[1];
+    const p = encodeURI(`${endpoint}?ids=${ids.join()}&includeNutrition=false`);
+    return fetch(p, {
+        headers:{
+          "X-Mashape-Key": ""
+        }
+      })
+      .then(response => response.json())
+      .catch(error => `Error on getting data from ${endpoint}`);
+
+  }
+
+  parseDishesFromEndpoint(data) {
+    let arr = [];
+
+    data.forEach(dish => {
+      let ingredients = dish.extendedIngredients;
+      let ingrArr = [];
+      ingredients.forEach(ingredient => {
+        ingrArr.push({
+          "name": ingredient.name,
+          "quantity": ingredient.amount,
+          "unit": ingredient.unit,
+          "price": "no price in API"
+        });
+      })
+      arr.push({
+        "id": dish.id,
+        "name": dish.title,
+        "type": dish.dishTypes,
+        "image": dish.image,
+        "description": dish.instructions,
+        "ingredients": ingrArr
+      });
+    });
+    return arr;
+    //return this;
+  }
+
+  // For endpoints
+  getAll(text, option) {
+    this.getRecipesID(20, text, option)
+      .catch(e => console.log(e))
+      .then(ids => this.getRecipesInformation(ids))
+      .catch(e => console.log(e))
+      //.then(data => console.log(data[0].title + " " + data[0].id + " " + data[0].image));
+      .then(data => console.log(this.parseDishesFromEndpoint(data)));
+      /*
+    .then(this.getRecipesInformation.bind(this))
+    .then(this.getRecipesInformation)
+    .catch(e => console.log(e));
+    */
   }
 
   //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

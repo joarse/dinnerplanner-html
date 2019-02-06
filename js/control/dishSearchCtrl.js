@@ -14,6 +14,7 @@ class DishSearchCtrl {
       const text = this.dishSearchView.container.find("#inputText").val();
       const option = this.dishSearchView.container.find("option:selected").val();
 
+      this.model.getAll(text, option);
       // update the searchedInfo (text, option) in the model
       this.model.setSearchedInfo(text, option);
       generalController.confirmState("SEARCHED");
