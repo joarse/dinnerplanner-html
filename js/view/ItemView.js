@@ -7,7 +7,7 @@ class ItemView {
   createItem(id, image, text) {
     let div = `
     <div id="${id}" class="col-sm-6 col-md-4 col-lg-3 dish">
-      <img src="./images/${image}"/>
+      <img src="${image}"/>
       <label>${text}</label>
     </div>`;
     return $(div);

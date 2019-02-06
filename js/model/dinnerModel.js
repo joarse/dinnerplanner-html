@@ -165,6 +165,7 @@ class DinnerModel extends Observable {
   // get ID of recipes from endpoint
   getRecipesID(number, text, option) {
     const endpoint = this.endpoints[0];
+
     return fetch(`${endpoint}?number=${number}&query=${text}&type=${option}`, {
         headers:{
           "X-Mashape-Key": ""
@@ -182,15 +183,12 @@ class DinnerModel extends Observable {
 
   getRecipesInformation(ids) {
     const endpoint = this.endpoints[1];
-    const p = encodeURI(`${endpoint}?ids=${ids.join()}&includeNutrition=false`);
-    return fetch(p, {
-        headers:{
+    return fetch(`${endpoint}?ids=${ids.join()}&includeNutrition=false`, {
+      headers: {
           "X-Mashape-Key": ""
         }
       })
       .then(response => response.json())
-      .catch(error => `Error on getting data from ${endpoint}`);
-
   }
 
   parseDishesFromEndpoint(data) {
@@ -204,7 +202,7 @@ class DinnerModel extends Observable {
           "name": ingredient.name,
           "quantity": ingredient.amount,
           "unit": ingredient.unit,
-          "price": "no price in API"
+          "price": 1
         });
       })
       arr.push({
@@ -222,17 +220,12 @@ class DinnerModel extends Observable {
 
   // For endpoints
   getAll(text, option) {
-    this.getRecipesID(20, text, option)
-      .catch(e => console.log(e))
+    return this.getRecipesID(20, text, option)
+      .catch(e => console.log(`Error on getRecipesID: ${e}`))
       .then(ids => this.getRecipesInformation(ids))
-      .catch(e => console.log(e))
-      //.then(data => console.log(data[0].title + " " + data[0].id + " " + data[0].image));
-      .then(data => console.log(this.parseDishesFromEndpoint(data)));
-      /*
-    .then(this.getRecipesInformation.bind(this))
-    .then(this.getRecipesInformation)
-    .catch(e => console.log(e));
-    */
+      .catch(e => console.log(`Error on getRecipesInformation: ${e}`))
+      .then(data => this.parseDishesFromEndpoint(data))
+      .catch(e => console.log(`Error on parseDishesFromEndpoint: ${e}`));
   }
 
   //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
