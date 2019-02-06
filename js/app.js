@@ -26,10 +26,9 @@ window.onload = () => {
   const welcomeCtrl = new WelcomeCtrl(welcomeView, generalController);
   const backCtrl = new BackCtrl(backView, model, generalController);
   const sidebarCtrl = new SideBarCtrl(sideBarView, model, generalController);
+  const dishSearchCtrl = new DishSearchCtrl(dishSearchView, model, generalController);
   const dishFinishedCtrl = new DishFinishedCtrl(dishFinishedView, model, generalController);
   const dishDetailsCtrl = new DishDetailsCtrl(dishDetailsView, model, generalController);
-  const dishSearchCtrl = new DishSearchCtrl(dishSearchView, model, generalController);
-
 
   // adding views to general state controller
   const allViews = [welcomeView, backView, sideBarView, dishSearchView, dishDetailsView, dishFinishedView, dishPrintView];
@@ -80,7 +79,11 @@ class GeneralController {
     });
   }
 
-  confirmState(state) {
+  // Each controller will call this function to tell the generalController
+  // what it has done and request for the routing.
+  // state: the state it has done
+  // args: array of arguments for routing
+  confirmState(state, args) {
     switch(state) {
       case "WELCOME":
       case "BACK":
@@ -90,6 +93,9 @@ class GeneralController {
       case "CLICK_DISH":
         this.showScreen("DISH_DETAILS");
       break;
+      case "SEARCHED":
+        this.showScreen("SELECT_DISH");
+        break;
       case "CONFIRM_MENU":
         this.showScreen("DISH_OVERVIEW");
       break;

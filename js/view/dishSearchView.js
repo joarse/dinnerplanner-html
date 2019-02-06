@@ -1,16 +1,22 @@
-
-
 class DishSearchView {
 
   constructor(container, model) {
     this.container = container;
     this.model = model;
-    model.addObserver(this);  
+    model.addObserver(this);
   }
 
   init() {
+    this.generateSearchInput();
+    this.generateSelectOption();
+  }
+
+  generateSearchInput() {
+    this.container.find("#inputText").attr("placeholder", "Enter keywords");
+  }
+
+  generateSelectOption() {
     this.container.find("#inputSelect").empty();
-    this.container.find("#inputText").val("Enter key words");
     this.container.find("#inputSelect").append($("<option>", {
       value: "all",
       text: "all"
@@ -37,6 +43,7 @@ class DishSearchView {
     this.container.show();
     this.init();
   }
+
   update(args) {
     switch (args) {
       case "numberOfGuests":
@@ -45,5 +52,5 @@ class DishSearchView {
     }
   }
 
-  
+
 }

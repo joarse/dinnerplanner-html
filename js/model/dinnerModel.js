@@ -35,6 +35,9 @@ class DinnerModel extends Observable {
     // value: dish object
     this.selectedDishes = {};
 
+    // stores searched text and option in an array
+    this.searchedInfo = [undefined, 0];
+
     // stores the dish item selected
     this.selectedDishItem = -1;
     this.lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
@@ -54,6 +57,15 @@ class DinnerModel extends Observable {
   getNumberOfGuests() {
     //TODO Lab 1
     return this.numberOfGuests;
+  }
+
+  setSearchedInfo(text, option) {
+    this.searchedInfo = [text, option];
+    this.notifyObservers("searched");
+  }
+
+  getSearchedInfo() {
+    return this.searchedInfo;
   }
 
   //Returns the dish that is on the menu for selected type
@@ -149,6 +161,7 @@ class DinnerModel extends Observable {
   getAllDishes(type, filter) {
     return this.dishes.filter((dish) => {
       let found = true;
+
       if (filter) {
         found = false;
         dish.ingredients.forEach((ingredient) => {
@@ -161,7 +174,7 @@ class DinnerModel extends Observable {
         }
       }
 
-      return !type || (dish.type == type && found);
+      return (!type || dish.type == type) && found;
     });
   }
 

@@ -1,4 +1,3 @@
-
 class DishSearchCtrl {
 
   constructor(dishSearchView, model, generalController) {
@@ -6,16 +5,18 @@ class DishSearchCtrl {
     this.model = model;
     this.generalController = generalController;
 
-    this.dishSearchView.container.find("#inputText").change(event => {
-      console.log(this.dishSearchView.container.find("#inputText")[0].value);
-    });
+    this.bindSearchButton();
+  }
 
-    this.dishSearchView.container.find("#inputSelect").change(event => {
-      console.log(this.dishSearchView.container.find("#inputSelect").val());
-    });
+  bindSearchButton() {
+    const searchButton = this.dishSearchView.container.find("#searchButton");
+    searchButton.click((e) => {
+      const text = this.dishSearchView.container.find("#inputText").val();
+      const option = this.dishSearchView.container.find("option:selected").val();
 
-    this.dishSearchView.container.find("#searchButton").click(event => {
-      console.log("Button clicked");
+      // update the searchedInfo (text, option) in the model
+      this.model.setSearchedInfo(text, option);
+      generalController.confirmState("SEARCHED");
     });
   }
 }
