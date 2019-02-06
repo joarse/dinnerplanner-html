@@ -42,29 +42,40 @@
     <div class="container">
       <div class="row">
         <!-- Sidebar View -->
-        <div class="col-md-4" id="sideBarView">
-          <h2>My Dinner</h2>
-          <div class="container">
-            <i> People: </i> <input type="number" name="peopleNumber" min="1" id="guestInput" />
+        <div class="col-md-3" id="sideBarView">
+          <div class="row">
+            <h2>My Dinner</h2>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">People: </span>
+              </div>
+              <input type="number" class="form-control" name="peopleNumber" min="1" id="guestInput" />
+            </div>
           </div>
-          <table class="table" id="sideBarTable">
-            <thead>
-              <tr>
-                <th scope="col" class=" bg-secondary" id=" dishName">Dish name</th>
-                <th scope="col" class=" bg-secondary">Cost</th>
-              </tr>
-            </thead>
-            <tbody id="appendDishes"></tbody>
-          </table>
-          <div class="container">
-            <span id="menuCost" class="float-right">SEK</span>
+          <div class="row">
+            <table class="table" id="sideBarTable">
+              <thead>
+                <tr class="table-secondary">
+                  <th scope="col">Dish name</th>
+                  <th scope="col">Cost</th>
+                </tr>
+              </thead>
+              <tbody id="appendDishes"></tbody>
+            </table>
           </div>
-          <div class="container text-center">
-            <button class="btn btn-primary" id="sidebarBtn" disabled>Confirm dinner</button>
+          <div class="row justify-content-end">
+            <div class="col-auto">
+              <span id="menuCost">SEK</span>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <button class="btn btn-primary" id="sidebarBtn" disabled>Confirm dinner</button>
+            </div>
           </div>
         </div>
         <!-- Dish Search View-->
-        <div class="col-md-8" id="dishSearchView">
+        <div class="col-md-9" id="dishSearchView">
           <div class="container col-md-12">
             <h2 id="text"> Find a dish</h2>
             <input type="search" id="inputText" />
