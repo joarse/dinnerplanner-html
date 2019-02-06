@@ -42,9 +42,9 @@ class DishDetailsView {
       const quantity = $("<th>").text(ingredient.quantity);
       const unit = $("<th>").text(ingredient.unit);
       const name = $("<th>").text(ingredient.name);
-      const price = $("<th>").text(" SEK: " + ingredient.price);
+      const price = $("<th>").text(" SEK: " + ingredient.price * this.model.getNumberOfGuests());
       row.append(quantity, unit, name, price);
-      sum += ingredient.price;
+      sum += ingredient.price * this.model.getNumberOfGuests();
       table.append(row);
     });
     this.container.find("#ingrTable").append(table);
@@ -62,10 +62,11 @@ class DishDetailsView {
     this.container.hide();
   }
 
-  update(args) {
+  update(model, args) {
     // shoundt do anything here
     switch (args) {
-      case "numberOFGuests":
+      case "numberOfGuests":
+        this.init(this.model.selectedDishItem);
         break;
       case "menu":
         break;
