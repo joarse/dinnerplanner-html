@@ -39,7 +39,7 @@ class DishDetailsView {
     let table = $("<table>");
     dish.ingredients.forEach(ingredient => {
       let row = $("<tr>");
-      const quantity = $("<th>").text(ingredient.quantity);
+      const quantity = $("<th>").text(ingredient.quantity * this.model.getNumberOfGuests());
       const unit = $("<th>").text(ingredient.unit);
       const name = $("<th>").text(ingredient.name);
       const price = $("<th>").text(" SEK: " + ingredient.price * this.model.getNumberOfGuests());
