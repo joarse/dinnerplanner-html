@@ -16,23 +16,27 @@ class DishSearchView {
   }
 
   generateSelectOption() {
-    this.container.find("#inputSelect").empty();
-    this.container.find("#inputSelect").append($("<option>", {
-      value: "all",
-      text: "all"
-    }));
-    this.container.find("#inputSelect").append($("<option>", {
-      value: "starter",
-      text: "starter"
-    }));
-    this.container.find("#inputSelect").append($("<option>", {
-      value: "main dish",
-      text: "main dish"
-    }));
-    this.container.find("#inputSelect").append($("<option>", {
-      value: "dessert",
-      text: "dessert"
-    }));
+    const options = [
+      "main course",
+      "side dish",
+      "dessert",
+      "appetizer",
+      "salad",
+      "bread",
+      "breakfast",
+      "soup",
+      "beverage",
+      "sauce",
+      "drinks"];
+    const inputSelect = this.container.find("#inputSelect");
+    inputSelect.empty();
+    options.forEach((option) => {
+      console.log(option);
+      inputSelect.append($("<option>", {
+        value: option,
+        text: option
+      }));
+    });
   }
 
   hide() {
