@@ -27,7 +27,8 @@ class DinnerModel extends Observable {
     super();
     this.dishes = dishesConst; // to be replaced in lab 3
 
-    // API endpoint
+    // API Key & Endpoint
+    this.apiKey = "";
     const apiEndpoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com";
     this.endpoints = {
       "random": `${apiEndpoint}/recipes/random`,
@@ -172,7 +173,7 @@ class DinnerModel extends Observable {
 
     return fetch(endpoint, {
       headers: {
-          "X-Mashape-Key": ""
+          "X-Mashape-Key": this.apiKey
         }
       })
       .then(response => response.json())
@@ -192,7 +193,7 @@ class DinnerModel extends Observable {
 
     return fetch(`${endpoint}?ids=${ids.join()}&includeNutrition=false`, {
       headers: {
-          "X-Mashape-Key": ""
+          "X-Mashape-Key": this.apiKey
         }
       })
       .then(response => response.json())
