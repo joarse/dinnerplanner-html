@@ -18,7 +18,8 @@ class DishItemCtrl {
           this.generalController.confirmState("CLICK_DISH");
         }
         else {
-          // TODO: add spinner
+          // add spinner
+          this.dishItemView.startLoading();
           this.model.getDetailedInfo(id)
           .then(data => {
             this.model.parseDish(data);
@@ -30,7 +31,8 @@ class DishItemCtrl {
             this.generalController.confirmState("BACK");
           })
           .then(res => {
-            // TODO: rm spinner
+            // rm spinner
+            this.dishItemView.stopLoading();
             this.generalController.confirmState("CLICK_DISH");
           });
         }

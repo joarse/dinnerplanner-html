@@ -24,6 +24,31 @@ class DishItemView {
     this.controller.bind();
   }
 
+  initLoading() {
+    const loadingView = `
+    <div class="container loading">
+      <div class="row justify-content-center">
+        <div class="spinner-border" role="status" id="spinner">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>`;
+
+    return $(loadingView);
+  }
+
+  startLoading() {
+    const loadingView = this.initLoading();
+    this.container.children().hide();
+    this.container.append(loadingView);
+    this.container.show();
+  }
+
+  stopLoading() {
+    this.container.children().show();
+    this.container.find(".loading").hide();
+  }
+
   update(args) {
     switch (args) {
     case "numberOfGuests":
