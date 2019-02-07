@@ -18,7 +18,7 @@ class WelcomeView{
 
   initLoading() {
     const loadingView = `
-    <div class="row justify-content-center">
+    <div class="row justify-content-center loading">
       <div class="spinner-border" role="status" id="spinner">
         <span class="sr-only">Loading...</span>
       </div>
@@ -29,17 +29,14 @@ class WelcomeView{
 
   startLoading() {
     const loadingView = this.initLoading();
-    this.buffer = this.container.children();
-    console.log(this.buffer);
-    this.container.empty();
+    this.container.children().hide();
     this.container.append(loadingView);
     this.container.show();
   }
 
   stopLoading() {
-    this.container.empty();
-    this.container.append(this.buffer);
-    this.container.show();
+    this.container.children().show();
+    this.container.find(".loading").hide();
   }
 
   update(args) {

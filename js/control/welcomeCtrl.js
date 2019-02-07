@@ -25,6 +25,7 @@ class WelcomeCtrl {
       .catch((e) => {
         console.log(e);
         alert("There's some error in after fetching raw info");
+        // redirect
         this.generalController.confirmState("HOME");
       });
     });
