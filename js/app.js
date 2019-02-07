@@ -85,7 +85,7 @@ class GeneralController {
   // what it has done and request for the routing.
   // state: the state it has done
   // args: array of arguments for routing
-  confirmState(state, args) {
+  confirmState(state) {
     switch (state) {
       case "HOME":
         this.showScreen("WELCOME");

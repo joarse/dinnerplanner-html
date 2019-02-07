@@ -14,16 +14,17 @@ class WelcomeCtrl {
       // and the next scre
 
       // add the spinner
-      this.generalController.confirmState("WELCOME");
+      this.welcomeView.startLoading();
       this.model.getRecipesRawInfo(this.model.numOfDishesShown, "burger", "main course")
       .then(res => {
         this.model.dishesRawInfo = res;
         // rm the spinner
+        this.welcomeView.stopLoading();
         this.generalController.confirmState("BACK");
       })
       .catch((e) => {
         console.log(e);
-        alert("There's some error about the API");
+        alert("There's some error in after fetching raw info");
         this.generalController.confirmState("HOME");
       });
     });

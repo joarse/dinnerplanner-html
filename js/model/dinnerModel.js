@@ -179,6 +179,10 @@ class DinnerModel extends Observable {
         }));
 
         return ret;
+      })
+      .catch(e => {
+        alert("There's something wrong while handling data of raw info");
+        console.log(e);
       });
   }
 
@@ -192,7 +196,7 @@ class DinnerModel extends Observable {
       })
       .then(response => response.json())
       .catch(e => {
-        alert("There's something wronf while getting detailed info of a dish");
+        alert("There's something wrong while getting detailed info of a dish");
         console.log(e);
       });
   }
