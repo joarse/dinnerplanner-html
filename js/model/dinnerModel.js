@@ -227,7 +227,7 @@ class DinnerModel extends Observable {
   }
 
   // For endpoints
-  getAll(text, option) {
+  getAll(number, text, option) {
     return this.getRecipesID(20, text, option)
       .catch(e => console.log(`Error on getRecipesID: ${e}`))
       .then(ids => this.getRecipesInformation(ids))
@@ -255,8 +255,8 @@ class DinnerModel extends Observable {
           found = true;
         }
       }
-
-      return (!type || dish.type == type) && found;
+      // with the API, dish.type is an array so this is changed
+      return (!type || dish.type.includes(type)) && found;
     });
   }
 
