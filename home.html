@@ -53,6 +53,7 @@
     <!-- Main body of a lot of views -->
     <div class="container">
       <div class="row">
+
         <!-- Sidebar View -->
         <div class="col-md-3" id="sideBarView">
           <div class="row">
@@ -86,6 +87,7 @@
             </div>
           </div>
         </div>
+
         <!-- Dish Search View-->
         <div class="col-md-9" id="dishSearchView">
           <div class="container col-md-12">
@@ -99,10 +101,11 @@
             <!-- Mosy likely, the images are created dynamiclly by the views-->
           </div>
         </div>
+
         <!-- Dish Details View-->
         <div class="col-md-9" id="dishDetailsView">
           <div class="row">
-            <div class="col-md-6" id="infoDiv">
+            <div class="col-lg-6" id="infoDiv">
               <h2 id="infoHeader">placeholder</h2>
               <img id="infoImg" />
               <p id="infoText">placeholder</p>
@@ -112,7 +115,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6" id="ingredientsDiv">
+            <div class="col-lg-6" id="ingredientsDiv">
                <b id="ingrHeader">placeholer</b>
               <hr />
               <table id="ingrTable"></table>
@@ -124,12 +127,17 @@
             </div>
           </div>
           <div class="row">
-            <h3 id="preparationHeader">placeholdertext</h3>
-            <p id="preparationText">
+            <div class="col">
+              <h3 id="preparationHeader">placeholdertext</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col" id="preparationText">
               placeholderText
-            </p>
+            </div>
           </div>
         </div>
+
         <!-- Dish Overview-->
         <div class="container text-center" id="dishFinishedView">
           <!-- Dish Item View-->
@@ -143,6 +151,7 @@
           </div>
           <button class="btn btn-primary" id="printButton"> placeholder</button>
         </div>
+
         <!-- Dish Print View-->
         <div class="container" id="dishPrintView">
           <!-- Every html-dom is created by the view dynamiclly-->
