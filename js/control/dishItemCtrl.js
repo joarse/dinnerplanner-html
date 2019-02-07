@@ -1,7 +1,41 @@
-
 class DishItemCtrl {
 
-  constructor(dishItemView) {
+  constructor(dishItemView, model, generalController) {
     this.dishItemView = dishItemView;
+    this.model = model;
+    this.generalController = generalController;
   }
+
+  bind() {
+    this.dishItemView.container.find(".dish").toArray().forEach(item => {
+      $(item).click(e => {
+        const id = $(e.currentTarget).attr("id");
+        this.model.selectedDishItem = id;
+
+        // get detailed info of one dish
+        // getDish from model if it exists
+        if(Object.keys(this.model.dishes).includes(id)) {
+          this.generalController.confirmState("CLICK_DISH");
+        }
+        else {
+          // TODO: add spinner
+          this.model.getDetailedInfo(id)
+          .then(data => {
+            this.model.parseDish(data);
+          })
+          .catch(e => {
+            alert("There's something wrong in fetching dish!!!");
+            console.log(e)
+            // redirect
+            this.generalController.confirmState("BACK");
+          })
+          .then(res => {
+            // TODO: rm spinner
+            this.generalController.confirmState("CLICK_DISH");
+          });
+        }
+      });
+    });
+  }
+
 }

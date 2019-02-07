@@ -5,6 +5,11 @@ class DishItemView {
     this.model = model;
     this.model.addObserver(this);
     this.generalController = generalController;
+
+    ////////////////////////////////////
+    // Initiate dishItem Controller here
+    ////////////////////////////////////
+    this.controller = new DishItemCtrl(this, model, generalController);
   }
 
   init() {
@@ -13,10 +18,10 @@ class DishItemView {
       // create dish item
       let itemView = new ItemView(dish.id, dish.image, dish.name);
       this.container.append(itemView.container);
-      // create dish item controller and bind event on it
-      let itemCrtl = new ItemCtrl(itemView, this.model, this.generalController);
-      itemCrtl.bind();
     });
+
+    // bind event on created dish item
+    this.controller.bind();
   }
 
   update(args) {
