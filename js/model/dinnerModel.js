@@ -168,7 +168,7 @@ class DinnerModel extends Observable {
         }
       })
       .then(response => response.json())
-      .catch(error => `Error on getting data from ${endpoint}`)
+      .catch(error => console.log(`Error on getting data from ${endpoint}`))
       .then((x) => {
         let ret = [];
         const response = x.results;
@@ -191,6 +191,10 @@ class DinnerModel extends Observable {
         }
       })
       .then(response => response.json())
+      .catch(e => {
+        alert("There's something wronf while getting detailed info of a dish");
+        console.log(e);
+      });
   }
 
   // getRecipesInformation(ids) {

@@ -14,7 +14,6 @@ class ItemCtrl {
       // get detailed info of one dish
       // getDish from model if it exists
       if(Object.keys(this.model.dishes).includes(id)) {
-        console.log("same");
         this.generalController.confirmState("CLICK_DISH");
       }
       else {
@@ -25,8 +24,9 @@ class ItemCtrl {
         })
         .catch(e => {
           alert("There's something wrong in fetching dish!!!");
-          // TODO: redirect
           console.log(e)
+          // redirect
+          this.generalController.confirmState("BACK");
         })
         .then(res => {
           // TODO: rm spinner
