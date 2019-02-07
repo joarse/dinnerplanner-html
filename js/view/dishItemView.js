@@ -7,15 +7,9 @@ class DishItemView {
     this.generalController = generalController;
   }
 
-  init(args) {
-    let text = args[0];
-    let option = args[1];
-
-    // there is no type called "all", so we need to change it into undefined
-    if (option === "all") option = undefined;
-
+  init() {
     // show all dish item
-    this.model.getAllDishes(option, text).forEach((dish) => {
+    this.model.getDishesRawInfo().forEach((dish) => {
       // create dish item
       let itemView = new ItemView(dish.id, dish.image, dish.name);
       this.container.append(itemView.container);
@@ -32,8 +26,7 @@ class DishItemView {
     case "menu":
       break;
     case "searched":
-      const searchedInfo = this.model.getSearchedInfo();
-      this.init(searchedInfo);
+      this.init();
       break;
     }
   }

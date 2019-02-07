@@ -16,11 +16,9 @@ class DishSearchCtrl {
 
       // add the spinner
       this.generalController.confirmState("SEARCHED");
-      this.model.getAll(20, text, option)
+      this.model.getRecipesRawInfo(this.model.numOfDishesShown, text, option)
       .then((dishes) => {
-        this.model.dishes = dishes;
-        // update the searchedInfo (text, option) in the model
-        this.model.setSearchedInfo(text, option);
+        this.model.dishesRawInfo = dishes;
         // rm the spinner
         this.generalController.confirmState("BACK");
       })

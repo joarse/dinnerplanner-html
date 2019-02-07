@@ -15,9 +15,10 @@ class WelcomeCtrl {
 
       // add the spinner
       this.generalController.confirmState("WELCOME");
-      this.model.getAll(20)
+      this.model.getRecipesRawInfo(this.model.numOfDishesShown, "burger", "main course")
       .then(res => {
-        this.model.dishes = res;
+        this.model.dishesRawInfo = res;
+        console.log(res);
         // rm the spinner
         this.generalController.confirmState("BACK");
       })

@@ -26,12 +26,13 @@ class DinnerModel extends Observable {
   constructor(){
     super();
     this.dishes = dishesConst; // to be replaced in lab 3
+    this.numOfDishesShown = 20;
+    this.dishesRawInfo;
 
     // API Key & Endpoint
     this.apiKey = "";
     const apiEndpoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com";
     this.endpoints = {
-      "random": `${apiEndpoint}/recipes/random`,
       "search": `${apiEndpoint}/recipes/search`,
       "informationBulk": `${apiEndpoint}/recipes/informationBulk`
     };
@@ -43,9 +44,6 @@ class DinnerModel extends Observable {
     // key: id
     // value: dish object
     this.selectedDishes = {};
-
-    // stores searched text and option in an array
-    this.searchedInfo = [undefined, undefined];
 
     // stores the dish item selected
     this.selectedDishItem = -1;
@@ -68,15 +66,6 @@ class DinnerModel extends Observable {
     return this.numberOfGuests;
   }
 
-  setSearchedInfo(text, option) {
-    this.searchedInfo = [text, option];
-    this.notifyObservers("searched");
-  }
-
-  getSearchedInfo() {
-    return this.searchedInfo;
-  }
-
   //Returns the dish that is on the menu for selected type
   getSelectedDish(type) {
     //TODO Lab 1
@@ -88,6 +77,10 @@ class DinnerModel extends Observable {
     });
 
     return selectedDish;
+  }
+
+  getDishesRawInfo() {
+    return this.dishesRawInfo;
   }
 
   //Returns all the dishes on the menu.
@@ -164,12 +157,10 @@ class DinnerModel extends Observable {
     this.notifyObservers("menu");
   }
 
-  // get ID of recipes from endpoint
-  getRecipesID(number, text, option) {
-    // if option === undefined, then it means "all"
-    const endpoint = (option === undefined)
-      ? `${this.endpoints.random}?number=${number}`
-      : `${this.endpoints.search}?number=${number}&query=${text}&type=${option}`;
+  // get {ID, name, image} of recipes from endpoint
+  // ret: array of {id, name, image}
+  getRecipesRawInfo(number, text, option) {
+    const endpoint = `${this.endpoints.search}?number=${number}&query=${text}&type=${option}`;
 
     return fetch(endpoint, {
       headers: {
@@ -179,12 +170,15 @@ class DinnerModel extends Observable {
       .then(response => response.json())
       .catch(error => `Error on getting data from ${endpoint}`)
       .then((x) => {
-        let ids = [];
-        //get all the ids into an array
-        const response = (option === undefined)? x.recipes: x.results;
-        response.forEach(e => ids.push(e.id));
+        let ret = [];
+        const response = x.results;
+        response.forEach(e => ret.push({
+          "id": e.id,
+          "name": e.title,
+          "image": x.baseUri + e.image
+        }));
 
-        return ids;
+        return ret;
       });
   }
 
@@ -227,14 +221,14 @@ class DinnerModel extends Observable {
   }
 
   // For endpoints
-  getAll(number, text, option) {
-    return this.getRecipesID(20, text, option)
-      .catch(e => console.log(`Error on getRecipesID: ${e}`))
-      .then(ids => this.getRecipesInformation(ids))
-      .catch(e => console.log(`Error on getRecipesInformation: ${e}`))
-      .then(data => this.parseDishesFromEndpoint(data))
-      .catch(e => console.log(`Error on parseDishesFromEndpoint: ${e}`));
-  }
+  // getAll(number, text, option) {
+  //   return this.getRecipesID(20, text, option)
+  //     .catch(e => console.log(`Error on getRecipesID: ${e}`))
+  //     .then(ids => this.getRecipesInformation(ids))
+  //     .catch(e => console.log(`Error on getRecipesInformation: ${e}`))
+  //     .then(data => this.parseDishesFromEndpoint(data))
+  //     .catch(e => console.log(`Error on parseDishesFromEndpoint: ${e}`));
+  // }
 
   //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
   //you can use the filter argument to filter out the dish by name or ingredient (use for search)
