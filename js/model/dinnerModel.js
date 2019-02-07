@@ -145,7 +145,7 @@ class DinnerModel extends Observable {
     const foundDish = Object.values(this.selectedDishes).find((selectedDish) => {
       return selectedDish.type == dish.type;
     });
-    if (foundDish) this.removeDishFromMenu(foundDish.id);
+    //if (foundDish) this.removeDishFromMenu(foundDish.id);
     this.selectedDishes[id] = dish;
     this.notifyObservers("menu");
   }
