@@ -38,18 +38,16 @@ class DishDetailsView {
     });
     */
     this.container.find("#ingrTable").empty();
-    let table = $("<table>");
     dish.ingredients.forEach(ingredient => {
-      let row = $("<tr>");
-      const quantity = $("<th>").text(ingredient.quantity * this.model.getNumberOfGuests());
-      const unit = $("<th>").text(ingredient.unit);
-      const name = $("<th>").text(ingredient.name);
-      const price = $("<th>").text(" SEK: " + ingredient.price * this.model.getNumberOfGuests());
+      let row = $("<tr>", { "scope": "row"});
+      const quantity = $("<th>", { "scope": "col" }).text((ingredient.quantity * this.model.getNumberOfGuests()).toFixed(2));
+      const unit = $("<th>", { "scope": "col" }).text(ingredient.unit);
+      const name = $("<th>", { "scope": "col" }).text(ingredient.name);
+      const price = $("<th>", { "scope": "col" }).text(" SEK: " + (ingredient.price * this.model.getNumberOfGuests()));
       row.append(quantity, unit, name, price);
       sum += ingredient.price * this.model.getNumberOfGuests();
-      table.append(row);
+      this.container.find("#ingrTable").append(row);
     });
-    this.container.find("#ingrTable").append(table);
 
     this.container.find("#addToMenuBtn").html("Add to menu");
     this.container.find("#totalText").html("SEK " + sum);
