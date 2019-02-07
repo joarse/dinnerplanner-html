@@ -18,9 +18,11 @@ class WelcomeView{
 
   initLoading() {
     const loadingView = `
-    <div class="row justify-content-center loading">
-      <div class="spinner-border" role="status" id="spinner">
-        <span class="sr-only">Loading...</span>
+    <div class="container loading">
+      <div class="row justify-content-center">
+        <div class="spinner-border" role="status" id="spinner">
+          <span class="sr-only">Loading...</span>
+        </div>
       </div>
     </div>`;
 
