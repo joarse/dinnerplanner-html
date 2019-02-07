@@ -14,6 +14,7 @@ window.onload = () => {
 
   // Init views
   const welcomeView = new WelcomeView($("#welcomeView"), model);
+  const loadingView = new LoadingView($("#spinner"), generalController);
   const backView = new BackView($("#backView"), model);
   const sideBarView = new SideBarView($("#sideBarView"), model, generalController);
   const dishSearchView = new DishSearchView($("#dishSearchView"), model);
@@ -31,13 +32,14 @@ window.onload = () => {
   const dishDetailsCtrl = new DishDetailsCtrl(dishDetailsView, model, generalController);
 
   // adding views to general state controller
-  const allViews = [welcomeView, backView, sideBarView, dishSearchView, dishDetailsView, dishFinishedView, dishPrintView];
-  allViews.forEach(view => { generalController.addView(view) });
+  const allViews = [welcomeView, loadingView, backView, sideBarView, dishSearchView, dishDetailsView, dishFinishedView, dishPrintView];
+  allViews.forEach(view => { generalController.addView(view)});
   generalController.hideAll();
 
 
   // adding screens to general state controllers
   generalController.addScreen("WELCOME", [welcomeView]);
+  generalController.addScreen("LOADING", [loadingView]);
   generalController.addScreen("SELECT_DISH", [sideBarView, dishSearchView, dishItemView]);
   generalController.addScreen("DISH_OVERVIEW", [backView, dishFinishedView]);
   generalController.addScreen("DISH_DETAILS", [sideBarView, dishDetailsView]);
@@ -84,24 +86,24 @@ class GeneralController {
   // state: the state it has done
   // args: array of arguments for routing
   confirmState(state, args) {
-    switch(state) {
-      case "WELCOME":
+    switch (state) {
       case "BACK":
       case "ADD_TO_MENU":
         this.showScreen("SELECT_DISH");
       break;
+      case "WELCOME":
+      case "SEARCHED":
+        this.showScreen("LOADING");
+      break;
       case "CLICK_DISH":
         this.showScreen("DISH_DETAILS");
       break;
-      case "SEARCHED":
-        this.showScreen("SELECT_DISH");
-        break;
       case "CONFIRM_MENU":
         this.showScreen("DISH_OVERVIEW");
       break;
       case "FINISH_MENU":
         this.showScreen("DISH_PRINTOUT");
-      break;
+        break;
     }
   }
 };

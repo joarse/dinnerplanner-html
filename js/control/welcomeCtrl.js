@@ -14,11 +14,12 @@ class WelcomeCtrl {
       // and the next scre
 
       // TODO: add spinner
+      this.generalController.confirmState("WELCOME");
       this.model.getAll(20)
       .then(res => {
         this.model.dishes = res;
         // TODO: rm spinner
-        generalController.confirmState("WELCOME");
+       this.generalController.confirmState("BACK");
       })
     });
   }

@@ -31,7 +31,7 @@ class DishSearchView {
     const inputSelect = this.container.find("#inputSelect");
     inputSelect.empty();
     options.forEach((option) => {
-      console.log(option);
+      //console.log(option);
       inputSelect.append($("<option>", {
         value: option,
         text: option

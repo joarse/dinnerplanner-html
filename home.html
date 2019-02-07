@@ -19,6 +19,10 @@
         <h1 class="text-center">Dinner planner</h1>
       </div>
     </div>
+    <!-- Loading View-->
+    <div class="spinner-border" role="status" id="spinner">
+      <span class="sr-only">Loading...</span>
+    </div>
     <!-- Back View -->
     <div class="container" id="backView">
       <div class="row">
@@ -103,7 +107,7 @@
             <div class="col-md-6 bg-warning" id="ingredientsDiv">
               <div class="row">
                 <div class="col" style="margin-top: 1em">
-                  <b id="ingrHeader" >placeholer</b>
+                  <b id="ingrHeader">placeholer</b>
                 </div>
               </div>
               <hr />
@@ -156,6 +160,7 @@
     <!-- TODO: Here you should include JS code for your other views -->
     <!-- views-->
     <script src="js/view/welcomeView.js"></script>
+    <script src="js/view/loadingView.js"></script>
     <script src="js/view/backView.js"></script>
     <script src="js/view/ItemView.js"></script>
     <script src="js/view/dishDetailsView.js"></script>

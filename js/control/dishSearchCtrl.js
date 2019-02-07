@@ -15,14 +15,16 @@ class DishSearchCtrl {
       const option = this.dishSearchView.container.find("option:selected").val();
 
       // TODO: add spinner
-      this.model.getAll(text, option)
-      .then((dishes) => {
+      this.generalController.confirmState("SEARCHED");
+      this.model.getAll(20, text, option)
+        .then((dishes) => {
         this.model.dishes = dishes;
         // update the searchedInfo (text, option) in the model
         this.model.setSearchedInfo(text, option);
         // TODO: rm the spinner
-        generalController.confirmState("SEARCHED");
+        generalController.confirmState("BACK");
       });
     });
   }
+
 }
