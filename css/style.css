@@ -3,3 +3,15 @@
 #ingredientsDiv {
   background-color: #F9C774;
 }
+
+@media screen and (max-width: 768px) {
+  #ingredientsDiv {
+    width: 100%;
+    text-align: center;
+  }
+  #ingrTable{
+    width:100;
+    text-align: left;
+  }
+
+} 
