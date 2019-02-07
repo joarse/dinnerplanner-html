@@ -13,14 +13,19 @@ class WelcomeCtrl {
       // should notify the general state controller that welcomeview is hidden
       // and the next scre
 
-      // TODO: add spinner
+      // add the spinner
       this.generalController.confirmState("WELCOME");
       this.model.getAll(20)
       .then(res => {
         this.model.dishes = res;
-        // TODO: rm spinner
-       this.generalController.confirmState("BACK");
+        // rm the spinner
+        this.generalController.confirmState("BACK");
       })
+      .catch((e) => {
+        console.log(e);
+        alert("There's some error about the API");
+        this.generalController.confirmState("HOME");
+      });
     });
   }
 }

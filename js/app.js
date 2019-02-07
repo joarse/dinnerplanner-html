@@ -87,6 +87,9 @@ class GeneralController {
   // args: array of arguments for routing
   confirmState(state, args) {
     switch (state) {
+      case "HOME":
+        this.showScreen("WELCOME");
+      break;
       case "BACK":
       case "ADD_TO_MENU":
         this.showScreen("SELECT_DISH");
