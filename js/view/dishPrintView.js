@@ -1,5 +1,3 @@
-
-
 class DishPrintView {
 
   constructor(container, model) {
@@ -10,7 +8,7 @@ class DishPrintView {
 
   init() {
     this.container.empty();
-    let menu = this.model.getFullMenu();
+    const menu = this.model.getFullMenu();
     menu.forEach(dish => {
       this.createDom(dish);
     });
@@ -30,11 +28,10 @@ class DishPrintView {
     let prepText = document.createElement("p");
     let prepTextNode = document.createTextNode(dish.description);
 
-    image.src = "./images/" + dish.image;
+    image.src = dish.image;
     prepHeader.innerHTML = "Preperation";
     dishHeader.innerHTML = dish.name;
 
-    
 
     // set div col-md
     div.classList.add("row");
@@ -56,6 +53,26 @@ class DishPrintView {
     div.append(div2);
     div.append(div3);
     this.container.append(div);
+  }
+
+  create(dish) {
+    const dom = `
+    <div class"row">
+      <div class="col-2">
+        <img src="${dish.image}" width="100%" />
+      </div>
+      <div class="col-5">
+        <h2>${dish.name}</h2>
+        <p>${this.model.lorem}</p>
+      </div>
+      <div class="col-5">
+        <h2>Preperation</h2>
+        <p>${dish.description}</p>
+      </div>
+    </div>
+    `;
+
+    return $(dom);
   }
 
   hide() {
