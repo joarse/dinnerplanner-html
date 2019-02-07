@@ -18,7 +18,6 @@ class WelcomeCtrl {
       this.model.getRecipesRawInfo(this.model.numOfDishesShown, "burger", "main course")
       .then(res => {
         this.model.dishesRawInfo = res;
-        console.log(res);
         // rm the spinner
         this.generalController.confirmState("BACK");
       })

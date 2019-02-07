@@ -184,7 +184,6 @@ class DinnerModel extends Observable {
 
   getDetailedInfo(id) {
     const endpoint = `${this.endpoints.information}/${id}/information`;
-    console.log(`${endpoint}?includeNutrition=false`);
 
     return fetch(`${endpoint}?includeNutrition=false`, {
       headers: {
