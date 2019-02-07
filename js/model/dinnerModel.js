@@ -25,7 +25,7 @@ class DinnerModel extends Observable {
 
   constructor(){
     super();
-    this.dishes = dishesConst; // to be replaced in lab 3
+    this.dishes = {};
     this.numOfDishesShown = 20;
     this.dishesRawInfo;
 
@@ -34,7 +34,7 @@ class DinnerModel extends Observable {
     const apiEndpoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com";
     this.endpoints = {
       "search": `${apiEndpoint}/recipes/search`,
-      "informationBulk": `${apiEndpoint}/recipes/informationBulk`
+      "information": `${apiEndpoint}/recipes`
     };
 
     //TODO Lab 1 implement the data structure that will hold number of guest
@@ -182,10 +182,11 @@ class DinnerModel extends Observable {
       });
   }
 
-  getRecipesInformation(ids) {
-    const endpoint = this.endpoints.informationBulk;
+  getDetailedInfo(id) {
+    const endpoint = `${this.endpoints.information}/${id}/information`;
+    console.log(`${endpoint}?includeNutrition=false`);
 
-    return fetch(`${endpoint}?ids=${ids.join()}&includeNutrition=false`, {
+    return fetch(`${endpoint}?includeNutrition=false`, {
       headers: {
           "X-Mashape-Key": this.apiKey
         }
@@ -193,31 +194,39 @@ class DinnerModel extends Observable {
       .then(response => response.json())
   }
 
-  parseDishesFromEndpoint(data) {
-    let arr = [];
+  // getRecipesInformation(ids) {
+  //   const endpoint = this.endpoints.informationBulk;
 
-    data.forEach(dish => {
-      let ingredients = dish.extendedIngredients;
-      let ingrArr = [];
-      ingredients.forEach(ingredient => {
-        ingrArr.push({
-          "name": ingredient.name,
-          "quantity": ingredient.amount,
-          "unit": ingredient.unit,
-          "price": 1
-        });
-      })
-      arr.push({
-        "id": dish.id,
-        "name": dish.title,
-        "type": dish.dishTypes,
-        "image": dish.image,
-        "description": dish.instructions,
-        "ingredients": ingrArr
+  //   return fetch(`${endpoint}?ids=${ids.join()}&includeNutrition=false`, {
+  //     headers: {
+  //         "X-Mashape-Key": this.apiKey
+  //       }
+  //     })
+  //     .then(response => response.json())
+  // }
+
+  parseDish(dish) {
+    let ingredients = dish.extendedIngredients;
+    let ingrArr = [];
+    ingredients.forEach(ingredient => {
+      ingrArr.push({
+        "name": ingredient.name,
+        "quantity": ingredient.amount,
+        "unit": ingredient.unit,
+        "price": 1
       });
     });
 
-    return arr;
+    const parsedDish = {
+      "id": dish.id,
+      "name": dish.title,
+      "image": dish.image,
+      "type": dish.dishType,
+      "description": dish.instructions,
+      "ingredients": ingrArr
+    }
+
+    this.dishes[dish.id] = parsedDish;
   }
 
   // For endpoints
@@ -255,8 +264,8 @@ class DinnerModel extends Observable {
   }
 
   //function that returns a dish of specific ID
-  getDish (id) {
-    return this.dishes.find((dish) => {
+  getDish(id) {
+    return Object.values(this.dishes).find(dish => {
       return dish.id == id;
     });
   }
