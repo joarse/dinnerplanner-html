@@ -15,8 +15,7 @@ class DishFinishedView {
       let itemView = new ItemView(dish.id, dish.image, dish.name)
       this.itemContainer.append(itemView.container);
     // create dish item controller and bind event on it
-      let itemCrtl = new ItemCtrl(itemView, this.model, this.generalController);
-      itemCrtl.bind();
+
       });
     this.container.find("#printButton").html("Print full recipe");
     this.container.find("dishTotalPrice").html(this.model.getTotalMenuPrice());
