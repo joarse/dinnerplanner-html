@@ -1,16 +1,9 @@
 window.onload = () => {
-  // We instantiate our model
+  // Initiate model
   const model = new DinnerModel();
-  /* TEST CODE */
- // model.addDishToMenu(1);
 
-  generalController = new GeneralController([], {});
-
-  // And create the instance of ExampleView
-  // const exampleView = new ExampleView(document.querySelector("#exampleView"));
-
-  // make an object with the html-doms relevant to the welcomeView
-
+  // Initiate general controller
+  const generalController = new GeneralController([], {});
 
   // Init views
   const welcomeView = new WelcomeView($("#welcomeView"), model);
@@ -23,19 +16,18 @@ window.onload = () => {
   const dishFinishedView = new DishFinishedView($("#dishFinishedView"), model);
   const dishPrintView = new DishPrintView($("#dishPrintView"), model);
 
-  // init controllers
+  // Init controllers
   const welcomeCtrl = new WelcomeCtrl(welcomeView, model, generalController);
   const backCtrl = new BackCtrl(backView, model, generalController);
-  const sidebarCtrl = new SideBarCtrl(sideBarView, model, generalController);
+  const sideBarCtrl = new SideBarCtrl(sideBarView, model, generalController);
   const dishSearchCtrl = new DishSearchCtrl(dishSearchView, model, generalController);
-  const dishFinishedCtrl = new DishFinishedCtrl(dishFinishedView, model, generalController);
   const dishDetailsCtrl = new DishDetailsCtrl(dishDetailsView, model, generalController);
+  const dishFinishedCtrl = new DishFinishedCtrl(dishFinishedView, model, generalController);
 
   // adding views to general state controller
   const allViews = [welcomeView, loadingView, backView, sideBarView, dishSearchView, dishDetailsView, dishFinishedView, dishPrintView];
   allViews.forEach(view => { generalController.addView(view)});
   generalController.hideAll();
-
 
   // adding screens to general state controllers
   generalController.addScreen("WELCOME", [welcomeView]);
